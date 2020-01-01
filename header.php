@@ -53,7 +53,7 @@
           </li>-->
           <?php wp_nav_menu(
               array('theme_location' => 'header-meu',
-                     'menu_class'     => 'nav-item mx-0 mx-lg-1 nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger'
+                     'menu_class'     => 'navbar-nav ml-auto nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger'
               )
           ); ?>
          
@@ -68,3 +68,4 @@
       </div>
     </div>
   </nav>
+  
