@@ -8,12 +8,12 @@
         
         <!-- Footer Location -->
         <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 class="text-uppercase mb-4">Location</h4>
-          <p class="lead mb-0">2215 John Daniel Drive
-            <br>Clark, MO 65243</p>
+        <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/Home.png" width="300" height="auto" alt="">
+
+       
         </div>
 
-        <!-- Footer Social Icons -->
+        <!-- Footer Social Icons
         <div class="col-lg-4 mb-5 mb-lg-0">
           <h4 class="text-uppercase mb-4">Around the Web</h4>
           <a class="btn btn-outline-light btn-social mx-1" href="#">
@@ -28,13 +28,13 @@
           <a class="btn btn-outline-light btn-social mx-1" href="#">
             <i class="fab fa-fw fa-dribbble"></i>
           </a>
-        </div>
+        </div> -->
 
         <!-- Footer About Text -->
-        <div class="col-lg-4">
-          <h4 class="text-uppercase mb-4">About Freelancer</h4>
-          <p class="lead mb-0">Freelance is a free to use, MIT licensed Bootstrap theme created by
-            <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+        <div class="col-lg-8">
+          <h4 class="text-uppercase mb-8">Como chegar</h4>
+          <p class="lead mb-0 text-left">Empresarial Albert Einstein, sala 209</p>
+          <p class="lead mb-0 text-left">R. Frei Matias Teves, 208, Recife, PE 50070-410</p>
         </div>
 
       </div>
