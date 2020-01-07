@@ -50,6 +50,40 @@
   <!-- Plugin JavaScript -->
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
+  <script>
+jQuery(document).ready(function() {
+
+jQuery('.mais-noticias').on('click', function(e) {
+    e.preventDefault();
+
+    var dados_envio = {
+      'mais_noticias_nonce': js_global.mais_noticias_nonce,
+        'paged': 2,
+        'action': 'mais_noticias'
+    }
+
+    jQuery.ajax({
+        url: js_global.xhr_url,
+        type: 'POST',
+        data: dados_envio,
+        dataType: 'JSON',
+        success: function(response) {
+            if (response == '401'  ){
+                console.log('Requisição inválida')
+            }
+            else if (response == 402) {
+                console.log('Todos os posts já foram mostrados')
+            } else {
+                console.log(response)
+            }
+        }
+    });
+
+
+});
+
+})
+  </script>
   <!-- Contact Form JavaScript -->
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/jqBootstrapValidation.js"></script>
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/contact_me.js"></script>
