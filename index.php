@@ -1,4 +1,10 @@
-<?php get_header();?>
+
+
+<?php get_header();
+$post_type = get_post_type();
+echo $post_type;
+echo "aquiiiiiiiiiiiiii";
+?>
 
   <!-- Masthead --> 
   <header class="text-white text-center mt-5">
@@ -24,6 +30,19 @@
         </a>
       </div>
   </header>
+
+
+
+<?php 
+  $args = array('post_type' => 'movies');
+  $query = new WP_Query( $args );
+
+  while($query->have_posts()): $query->the_post();
+?>
+  <?php the_title();?>
+
+<?php endwhile?>
+
 
   <!-- equipe Section -->
   <section class="page-section equipe" id="equipe">

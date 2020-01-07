@@ -8,7 +8,7 @@
         
         <!-- Footer Location -->
         <div class="col-lg-4 mb-5 mb-lg-0">
-        <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/Home.png" width="300" height="auto" alt="">
+        <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_branca.png" width="300" height="auto" alt="">
 
        
         </div>

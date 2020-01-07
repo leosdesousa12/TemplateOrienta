@@ -29,7 +29,7 @@
   <nav class="navbar navbar-light text-dark  navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
       <!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>-->
-      <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/Home.png" width="280" height="auto" alt="">
+      <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_normal.png" width="280" height="auto" alt="">
       <button class="navbar-toggler navbar-toggler-right text-uppercase  bg-secondary text-dark rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
