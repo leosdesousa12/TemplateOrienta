@@ -186,64 +186,28 @@ $args = array(
 register_post_type( 'propostas', $args );
 }
 
+function enable_ajax_functionality()
+{
+    wp_localize_script( 'ajaxify', 'ajaxifi_function', array('ajaxurl' => admin_url( 'admin-ajax.php')) );
 
-
-
-
-
-
-//Adiciona um script para o WordPress
-add_action( 'wp_enqueue_scripts', 'secure_enqueue_script' );
-function secure_enqueue_script() {
-  wp_register_script( 'secure-ajax-access', esc_url( add_query_arg( array( 'js_global' => 1 ), site_url() ) ) );
-  wp_enqueue_script( 'secure-ajax-access' );
 }
 
-//Joga o nonce e a url para as requisições para dentro do Javascript criado acima
-add_action( 'template_redirect', 'javascript_variaveis' );
-function javascript_variaveis() {
-  if ( !isset( $_GET[ 'js_global' ] ) ) return;
+add_action( 'template_redirect', 'enable_ajax_functionality');
 
-  $nonce = wp_create_nonce('mais_noticias_nonce');
-
-  $variaveis_javascript = array(
-    'mais_noticias_nonce' => $nonce, //Esta função cria um nonce para nossa requisição para buscar mais notícias, por exemplo.
-    'xhr_url'             => admin_url('admin-ajax.php') // Forma para pegar a url para as consultas dinamicamente.
-  );
-
-  $new_array = array();
-  foreach( $variaveis_javascript as $var => $value ) $new_array[] = esc_js( $var ) . " : '" . esc_js( $value ) . "'";
-
-  header("Content-type: application/x-javascript");
-  printf('var %s = {%s};', 'js_global', implode( ',', $new_array ) );
-  exit;
-}
-
-
-
-add_action('wp_ajax_nopriv_mais_noticias', 'mais_noticias');
-add_action('wp_ajax_mais_noticias', 'mais_noticias');
-
-function mais_noticias() {
-  if( ! wp_verify_nonce( $_POST['mais_noticias_nonce'], 'mais_noticias_nonce' ) ) {
-    echo '401'; // Caso não seja verificado o nonce enviado, a requisição vai retornar 401
+function test_ajax()
+{
+    header("Content-Type: application/json");
+   /* $posts_array = get_posts();
+    echo json_encode( $posts_array );*/
+    $args = array(
+        'post_type' => 'Propostas',
+        'paged' => $_POST['paged']
+      );
+      $posts_array = new WP_Query( $args  );
+      echo json_encode( $posts_array );
     die();
-  }
-  //Busca os dados que queremos
-  $args = array(
-    'post_type' => 'propostas',
-    'paged' => $_POST['paged']
-  );
-  $wp_query = new WP_Query( $args  );
-
-  //Caso tenha os dados, retorna-os / Caso não tenha retorna 402 para tratarmos no frontend
-  if( $wp_query->have_posts() ) {
-    echo json_encode( $wp_query->posts );
-  } else {
-    echo 402;
-  }
-  exit;
 }
-
+add_action( "wp_ajax_nopriv_test_ajax", "test_ajax");
+add_action( "wp_ajax_test_ajax","test_ajax");
 
 ?>

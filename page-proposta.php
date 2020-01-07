@@ -3,7 +3,7 @@
 
   <!-- Contact Section -->
   <section class="page-section mt-4" id="contact">
-    <div class="container mt-4">
+    <div ng-controller="HomeCtrl" class="container mt-4">
     <h1 class="text-center text-primary mb-2 mt-4">PROPOSTAS</h1>
 
       <!-- Contact Section Form -->

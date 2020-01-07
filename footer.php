@@ -41,6 +41,11 @@
     </div>
   </footer>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/app.js"></script>
+  <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/services.js"></script>
+  <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/controller.js"></script>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/vendor/jquery/jquery.min.js"></script>

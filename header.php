@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" lang="en">
 
 <head>
 
@@ -9,6 +9,10 @@
   <meta name="author" content="">
 
   <title> <?php bloginfo('name'); ?> </title>
+
+  <script type="text/javascript">
+    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+  </script>
 
   <!-- Custom fonts for this theme -->
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
