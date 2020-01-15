@@ -1,7 +1,17 @@
 app.controller('HomeCtrl',['$scope','Posts', function($scope, Posts){
-    console.log("rolou");
+    $scope.posts;
+    $scope.postPrincipal;
+    $scope.ID= 93;
+
     Posts.getPosts().then(function(data){
-        console.log(data.posts[2].post_title);
+        $scope.posts =data.posts;
+        $scope.postPrincipal = $scope.posts[0];
     });
+
+    $scope.principal = function(data){
+        $scope.postPrincipal = data;
+    }
+
+
 
 }]);

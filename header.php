@@ -11,11 +11,11 @@
   <title> <?php bloginfo('name'); ?> </title>
 
   <script type="text/javascript">
-    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+    var ajaxurl = "<?php echo admin_url('admin-ajax.php?_embed'); ?>";
   </script>
 
-  <!-- Custom fonts for this theme -->
-  <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
+  <!-- Custom fonts for this theme 
+  <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />-->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <!-- Theme CSS -->

@@ -9949,3 +9949,47 @@ Version: 1.0
     box-pack:center;
     box-align:center;
   }
+
+  .ng-scope-card{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    
+    text-align: center;
+    left:0;;
+  }
+
+  /* Dividir post em colunas */
+.duas-colunas {
+  -webkit-column-count: 2; /* Chrome, Safari, Opera */
+  -moz-column-count: 2; /* Firefox */
+  column-count: 2;
+  -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+  -moz-column-gap: 40px; /* Firefox */
+   column-gap: 40px;
+  -webkit-column-rule: 0px solid #cccccc; /* Chrome, Safari, Opera */
+  -moz-column-rule: 0px solid #cccccc; /* Firefox */
+  column-rule: 0px solid #cccccc;
+   -webkit-column-span: all; /* Chrome, Safari, Opera */
+   column-span: all;
+  -webkit-column-width: ;/* Chrome, Safari, Opera */
+  -moz-column-width: ;/* Firefox */
+  column-width: ;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .duas-colunas {
+      -webkit-column-count: 1; /* Chrome, Safari, Opera */
+      -moz-column-count: 1; /* Firefox */
+      column-count: 1;
+      -webkit-column-gap: 100%; /* Chrome, Safari, Opera */
+      -moz-column-gap: 100%; /* Firefox */
+       column-gap: 100%;
+       -webkit-column-span: all; /* Chrome, Safari, Opera */
+       column-span: all;
+      -webkit-column-width: ;/* Chrome, Safari, Opera */
+      -moz-column-width: ;/* Firefox */
+      column-width: ;
+    }
+  }

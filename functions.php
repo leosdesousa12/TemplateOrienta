@@ -1,6 +1,6 @@
 <?php 
 
-
+wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 //habilitando imagem destacas
 add_theme_support('post-thumbnails');
@@ -201,13 +201,65 @@ function test_ajax()
     echo json_encode( $posts_array );*/
     $args = array(
         'post_type' => 'Propostas',
-        'paged' => $_POST['paged']
+        '_thumbnail_id' => '_thumbnail_id',
+        'value' => '0',
+        'compare' => '>=',
+        
       );
-      $posts_array = new WP_Query( $args  );
-      echo json_encode( $posts_array );
+      $image = wp_get_attachment_image_src( get_post_thumbnail_id( $_post->ID ));
+      $thumbs = array(
+        'post_type' => 'Propostas',
+        'orderby'      => 'date',  
+        'order'        => 'DESC',
+        'post_mime_type' => 'image',
+
+);
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+        
+        $thumb_id = (int)get_post_thumbnail_id($p->ID);
+        $aTemp->post_id = $p->ID;
+        $aTemp->author = $p->post_author;
+        $aTemp->post_content = $p->post_content;
+        $aTemp->post_excerpt = $p->post_excerpt;
+        $aTemp->title = $p->post_title;
+        $aTemp->comment_count = $p->comment_count;	
+        $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
+        $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
+
+        $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
+        $oReturn->posts[] = $aTemp;
+    
+      }
+      echo json_encode( $oReturn );
+
     die();
 }
 add_action( "wp_ajax_nopriv_test_ajax", "test_ajax");
 add_action( "wp_ajax_test_ajax","test_ajax");
+add_action( 'rest_api_init', 'add_thumbnail_to_JSON' );
+function add_thumbnail_to_JSON() {
+//Add featured image
+register_rest_field( 
+    'post', // Where to add the field (Here, blog posts. Could be an array)
+    'featured_image_src', // Name of new field (You can call this anything)
+    array(
+        'get_callback'    => 'get_image_src',
+        'update_callback' => null,
+        'schema'          => null,
+         )
+    );
+}
+
+function get_image_src( $object, $field_name, $request ) {
+  $feat_img_array = wp_get_attachment_image_src(
+    $object['featured_media'], // Image attachment ID
+    'thumbnail',  // Size.  Ex. "thumbnail", "large", "full", etc..
+    true // Whether the image should be treated as an icon.
+  );
+  return $feat_img_array[0];
+}
 
 ?>
