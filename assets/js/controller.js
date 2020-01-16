@@ -15,3 +15,24 @@ app.controller('HomeCtrl',['$scope','Posts', function($scope, Posts){
 
 
 }]);
+
+app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope, Profissao, Category){
+   console.log("Profissao e carreira");
+    $scope.titleProfissao = "Profissões e Carreiras";
+    $scope.categorys;
+   Profissao.getPosts().then(function(data){
+    console.log(data.posts);
+    });
+
+    Category.getCategory().then(function(data){
+        console.log(data.category);
+        $scope.categorys = data.category;
+
+        console.log($scope.titleProfissao);
+        });
+
+$scope.lista = function(category){
+    $scope.titleProfissao = category.post_category.name;
+}
+
+}]);

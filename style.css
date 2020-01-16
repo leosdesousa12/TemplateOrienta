@@ -9954,7 +9954,7 @@ Version: 1.0
     margin-left: 0px !important;
     margin-right: 0px !important;
     
-    text-align: center;
+    text-align: center !important;
     left:0;;
   }
 
@@ -9974,6 +9974,24 @@ Version: 1.0
   -webkit-column-width: ;/* Chrome, Safari, Opera */
   -moz-column-width: ;/* Firefox */
   column-width: ;
+  }
+
+
+  .card-profissao{
+    border: 0px;
+  }
+
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff !important;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff !important;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff !important;
   }
 
 

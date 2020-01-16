@@ -169,7 +169,7 @@ $args = array(
 'hierarchical' => true,
 'description' => 'Hi, this is my custom post type.',
 'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'comments', 'page-attributes' ),
-'taxonomies' => array( 'category', 'post_tag', 'page-category' ),
+/*'taxonomies' => array( 'category', 'post_tag', 'page-category' ),*/
 'public' => true,
 'menu_icon'      => 'dashicons-lightbulb',
 'show_ui' => true,
@@ -184,7 +184,72 @@ $args = array(
 'capability_type' => 'post'
 );
 register_post_type( 'propostas', $args );
+
 }
+
+
+/* ____________________________ustom post type Profissões e Carreiras________________________ */
+
+
+add_action( 'init', 'custom_post_type_profissoes_carreiras' );
+function custom_post_type_profissoes_carreiras() {
+$labels = array(
+    'name' => _x( 'Profissões e Carreiras', 'Profissões e Carreiras' ),
+    'singular_name' => _x( 'Profissões e Carreiras', 'Profissões e Carreiras' ),
+    'add_new' => _x( 'Adcionar uma Profissão e Carreira', 'Adcionar uma Profissão e Carreira' ),
+    'add_new_item' => _x( 'Nova Profissão e Carreira', 'Nova Profissão e Carreira' ),
+    'edit_item' => _x( 'Editar Profissão e Carreira', 'Editar Profissão e Carreira' ),
+    'new_item' => _x( 'Nova Profissão e Carreira', 'Nova Profissão e Carreira' ),
+    'view_item' => _x( 'Visualizar Profissão e Carreira', 'Visualizar Profissão e Carreira' ),
+    'search_items' => _x( 'Procurar Profissão e Carreira', 'Procurar Profissão e Carreira' ),
+    'not_found' => _x( 'Profissão e Carreira não encontrada', 'Profissão e Carreira não encontrada' ),
+    'not_found_in_trash' => _x( 'No Profissão e Carreira found in Trash', 'Profissão e Carreira' ),
+    'parent_item_colon' => _x( 'Parent Profissão e Carreira:', 'Profissão e Carreira' ),
+    'menu_name' => _x( 'Profissões e Carreiras', 'Profissão e Carreira' ),
+);
+$args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+    'description' => 'Hi, this is my custom post type.',
+    'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'comments', 'page-attributes' ),
+    'taxonomies' => array( 'category', 'page-category' ),
+    'public' => true,
+    'menu_icon'      => 'dashicons-welcome-learn-more',
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'show_in_nav_menus' => true,
+    'publicly_queryable' => true,
+    'exclude_from_search' => false,
+    'has_archive' => true,
+    'query_var' => true,
+    'can_export' => true,
+    'rewrite' => true,
+    'capability_type' => 'post'
+    );
+register_post_type( 'Profissao_e_Carreira', $args );
+}
+
+
+
+/*____________________________________________________________________________________________ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function enable_ajax_functionality()
 {
@@ -225,6 +290,7 @@ function test_ajax()
         $aTemp->post_content = $p->post_content;
         $aTemp->post_excerpt = $p->post_excerpt;
         $aTemp->title = $p->post_title;
+
         $aTemp->comment_count = $p->comment_count;	
         $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
         $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
@@ -239,27 +305,77 @@ function test_ajax()
 }
 add_action( "wp_ajax_nopriv_test_ajax", "test_ajax");
 add_action( "wp_ajax_test_ajax","test_ajax");
-add_action( 'rest_api_init', 'add_thumbnail_to_JSON' );
-function add_thumbnail_to_JSON() {
-//Add featured image
-register_rest_field( 
-    'post', // Where to add the field (Here, blog posts. Could be an array)
-    'featured_image_src', // Name of new field (You can call this anything)
-    array(
-        'get_callback'    => 'get_image_src',
-        'update_callback' => null,
-        'schema'          => null,
-         )
-    );
-}
 
-function get_image_src( $object, $field_name, $request ) {
-  $feat_img_array = wp_get_attachment_image_src(
-    $object['featured_media'], // Image attachment ID
-    'thumbnail',  // Size.  Ex. "thumbnail", "large", "full", etc..
-    true // Whether the image should be treated as an icon.
-  );
-  return $feat_img_array[0];
+
+
+
+function getProfissao()
+{
+    header("Content-Type: application/json");
+   /* $posts_array = get_posts();
+    echo json_encode( $posts_array );*/
+    $args = array(
+        'post_type' => 'Profissao_e_Carreira',
+        'cat' => $cat_id,
+        
+      );
+      $image = wp_get_attachment_image_src( get_post_thumbnail_id( $_post->ID ));
+      $thumbs = array(
+        'post_type' => 'Propostas',
+        'orderby'      => 'date',  
+        'order'        => 'DESC',
+        'post_mime_type' => 'image',
+
+);
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+        
+        $thumb_id = (int)get_post_thumbnail_id($p->ID);
+        $aTemp->post_id = $p->ID;
+        $aTemp->author = $p->post_author;
+        $aTemp->post_content = $p->post_content;
+        $aTemp->post_excerpt = $p->post_excerpt;
+        $aTemp->post_category = get_terms( 'category', 'orderby=count&hide_empty=0' );
+        $aTemp->imgCategory = get_wp_term_image(3);
+        $aTemp->title = $p->post_title;
+        $aTemp->comment_count = $p->comment_count;	
+        $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
+        $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
+
+        $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
+        $oReturn->posts[] = $aTemp;
+    
+      }
+      echo json_encode( $oReturn );
+
+    die();
 }
+add_action( "wp_ajax_nopriv_tegetProfissao", "getProfissao");
+add_action( "wp_ajax_getProfissao","getProfissao");
+
+
+function getCategory()
+{
+    header("Content-Type: application/json");
+    $categorys = get_terms( 'category', 'orderby=name&hide_empty=0' );
+
+      foreach($categorys as $p){
+        if(get_wp_term_image($p->term_id)){ 
+            $aTemp = new stdClass();
+            $aTemp->post_category = $p;
+            $aTemp->img = get_wp_term_image($p->term_id);
+        // $aTemp->imgCategory =get_wp_term_image($p->term_id);
+        
+            $oReturn->category[] = $aTemp;
+        }
+      }
+      echo json_encode( $oReturn );
+
+    die();
+}
+add_action( "wp_ajax_nopriv_getCategory", "getCategory");
+add_action( "wp_ajax_getCategory","getCategory");
 
 ?>

@@ -26,7 +26,7 @@
               </div>
           </div>
           </div>
-          <div class="row justify-content-md-center "> 
+          <div class="row  justify-content-center">
             <div ng-repeat="post in posts" class="ng-scope-card text-center  col-auto mx-auto   ">           
                     <div ng-if="post.post_id != postPrincipal.post_id">
                       <img  ng-click="principal(post)" class="card-img text-center img-fluid img-thumbnail pt-4 mt-4 pt-0 mb-0 pb-0 border-0 rounded-0  " style="width: 200px; "  ng-src="{{post.image[0]}}"/>
@@ -34,7 +34,7 @@
             </div>
           </div>
         </div>
-    </div>
+    </section>
 
       <!-- Contact Section Form 
       <div class="row justify-content-md-center ">
