@@ -42,6 +42,8 @@
   </footer>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-sanitize.min.js"></script>
+
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/app.js"></script>
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/services.js"></script>
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/controller.js"></script>

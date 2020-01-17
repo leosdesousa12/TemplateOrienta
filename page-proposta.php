@@ -9,7 +9,7 @@
     <div class="row justify-content-md-center ">
         <div class="col-auto mx-auto  justify-content-md-center text-center ">
         <div class="duas-colunas">
-        <h4 class="text-color text-justify " ng-bind="postPrincipal.post_content"></h4>
+        <h4 class="text-color text-justify " ng-bind-html="postPrincipal.post_content"></h4>
         </div>
           <div class="card mb-4  mt-4 pt-4 mb-0 pb-0 border-0 rounded-0 " style="max-width: 100%; margin-bottom:0px !important;">
           <div class="row no-gutters  mt-0 pt-0 mb-0 pb-0 border-0 rounded-0 ">

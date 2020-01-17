@@ -9994,6 +9994,11 @@ Version: 1.0
     color: #fff !important;
   }
 
+.border-page{
+  border-color: #0088ab !important;
+  border-width: 3px !important;
+}
+
 
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */

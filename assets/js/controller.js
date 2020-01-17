@@ -19,20 +19,107 @@ app.controller('HomeCtrl',['$scope','Posts', function($scope, Posts){
 app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope, Profissao, Category){
    console.log("Profissao e carreira");
     $scope.titleProfissao = "Profissões e Carreiras";
+    $scope.listaPosts =[];
     $scope.categorys;
+    $scope.categoryFilter = -1;
+    $scope.pesquisa;
+    $scope.visualizar
+    //$scope.listaPostsFilter = []
+  
    Profissao.getPosts().then(function(data){
+    $scope.listaPosts = data.posts;
     console.log(data.posts);
     });
 
     Category.getCategory().then(function(data){
-        console.log(data.category);
         $scope.categorys = data.category;
 
-        console.log($scope.titleProfissao);
+       // console.log($scope.titleProfissao);
         });
 
-$scope.lista = function(category){
-    $scope.titleProfissao = category.post_category.name;
-}
+    $scope.lista = function(category){
+        $scope.titleProfissao = category.post_category.name;
+    // console.log(category.post_category);
+        $scope.categoryFilter = category.post_category.term_id;
+
+    }
+
+    $scope.myFilter = function (item) { 
+        //console.log($scope.pesquisa);
+        if($scope.pesquisa){
+            if(item.title ==$scope.pesquisa ){
+                console.log(pesquisa);
+            }
+        }
+        if($scope.categoryFilter ==-1){
+            return true;
+        }
+        if($scope.categoryFilter == item.post_category[0].cat_ID){
+            return item; 
+        }
+
+    
+    };
+
+    $scope.customFilter = function (item) {
+        if (!$scope.pesquisa && ($scope.categoryFilter ==-1) ) {// your input field is empty or no checkbox checked
+            return true;
+        }
+        if ($scope.pesquisa){
+            var searchVal = $scope.pesquisa;
+            searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
+
+            var regex = new RegExp('' + searchVal, 'i');
+
+            var matchOnValue = false; 
+
+            if ($scope.pesquisa) {
+            matchOnValue = regex.test(item.title);
+            }
+            return matchOnValue;
+            }
+        // console.log("elemento");
+            flag = false;
+            item.post_category.forEach(element => {
+
+                if($scope.categoryFilter == element.cat_ID){
+                    flag = true
+                    return element; 
+                }
+            });
+            if(flag){
+                return item;
+            }
+        
+        return false;
+    }
+
+
+  
+
+}]);
+
+
+
+
+app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category', function($scope, PostProfissao,Category){
+    $scope.post;
+    $scope.categorys;
+  
+
+    PostProfissao.getPost().then(function(data){
+        $scope.post =data.posts[0];
+        console.log(  $scope.post);
+    });
+
+    Category.getCategory().then(function(data){
+        console.log("categoria");
+        $scope.categorys = data.category;
+
+        console.log($scope.categorys);
+        });
+   
+
+
 
 }]);

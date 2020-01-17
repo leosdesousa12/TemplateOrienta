@@ -45,3 +45,19 @@ app.factory('Category', ['$http', function($http){
         }
     }
 }]);
+
+app.factory('PostProfissao', ['$http', function($http){
+    return {
+        getPost: function(){
+            var response = $http({
+                url: ajaxurl+"&_embed",
+                method: "GET",
+                params: {action: 'getPostProfissao'}
+            }).then(function (response){
+                return response.data;
+            });
+            return response;
+        }
+    }
+}]);
+

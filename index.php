@@ -1,9 +1,7 @@
 
 
 <?php get_header();
-$post_type = get_post_type();
-echo $post_type;
-echo "aquiiiiiiiiiiiiii";
+
 ?>
 
   <!-- Masthead --> 
@@ -34,7 +32,7 @@ echo "aquiiiiiiiiiiiiii";
 
 
 <?php 
-  $args = array('post_type' => 'movies');
+  $args = array('post_type' => 'profissao_e_carreira');
   $query = new WP_Query( $args );
 
   while($query->have_posts()): $query->the_post();

@@ -1,4 +1,9 @@
 <?php 
+//include_once( get_stylesheet_directory() .'/var.php');
+include_once( get_template_directory() . 'var.php' );
+
+
+
 
 wp_enqueue_style( 'style', get_stylesheet_uri() );
 
@@ -287,7 +292,7 @@ function test_ajax()
         $thumb_id = (int)get_post_thumbnail_id($p->ID);
         $aTemp->post_id = $p->ID;
         $aTemp->author = $p->post_author;
-        $aTemp->post_content = $p->post_content;
+        $aTemp->post_content = apply_filters('the_content', $p->post_content);
         $aTemp->post_excerpt = $p->post_excerpt;
         $aTemp->title = $p->post_title;
 
@@ -335,11 +340,14 @@ function getProfissao()
         $thumb_id = (int)get_post_thumbnail_id($p->ID);
         $aTemp->post_id = $p->ID;
         $aTemp->author = $p->post_author;
-        $aTemp->post_content = $p->post_content;
+        $aTemp->post_content = apply_filters('the_content', $p->post_content);
         $aTemp->post_excerpt = $p->post_excerpt;
-        $aTemp->post_category = get_terms( 'category', 'orderby=count&hide_empty=0' );
+        $aTemp->post_category = get_the_category( $p->ID );
         $aTemp->imgCategory = get_wp_term_image(3);
         $aTemp->title = $p->post_title;
+       // $aTemp->link = $p->guid;
+        $aTemp->link = get_permalink($p);
+
         $aTemp->comment_count = $p->comment_count;	
         $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
         $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
@@ -352,7 +360,7 @@ function getProfissao()
 
     die();
 }
-add_action( "wp_ajax_nopriv_tegetProfissao", "getProfissao");
+add_action( "wp_ajax_nopriv_getProfissao", "getProfissao");
 add_action( "wp_ajax_getProfissao","getProfissao");
 
 
@@ -377,5 +385,59 @@ function getCategory()
 }
 add_action( "wp_ajax_nopriv_getCategory", "getCategory");
 add_action( "wp_ajax_getCategory","getCategory");
+
+
+function getPostProfissao()
+{
+    session_start();
+
+    header("Content-Type: application/json");
+
+    $args = array(
+        'post_type' => 'Profissao_e_Carreira',
+        'cat' => $cat_id,
+        
+      );
+      $image = wp_get_attachment_image_src( get_post_thumbnail_id( $_post->ID ));
+      $thumbs = array(
+        'post_type' => 'Propostas',
+        'orderby'      => 'date',  
+        'order'        => 'DESC',
+        'post_mime_type' => 'image',
+
+);
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+        if($_SESSION["postId"] ==$p->ID ){
+            $thumb_id = (int)get_post_thumbnail_id($p->ID);
+            $aTemp->post_id = $p->ID;        
+            $aTemp->author = $p->post_author;
+            //$aTemp->post_content = $p->post_content;
+            $aTemp->post_content = apply_filters('the_content', $p->post_content);
+            $aTemp->post_excerpt = $p->post_excerpt;
+            $aTemp->post_category = get_the_category( $p->ID );
+            $aTemp->title = $p->post_title;
+        // $aTemp->link = $p->guid;
+            $aTemp->link = get_permalink($p);
+
+            $aTemp->comment_count = $p->comment_count;	
+            $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
+            $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
+
+            $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
+            $oReturn->posts[] = $aTemp;
+        }
+    
+      }
+      unset($_SESSION["postId"]);
+
+      echo json_encode( $oReturn );
+
+    die();
+}
+add_action( "wp_ajax_nopriv_getPostProfissao", "getPostProfissao");
+add_action( "wp_ajax_getPostProfissao","getPostProfissao");
 
 ?>
