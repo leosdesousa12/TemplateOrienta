@@ -91,3 +91,33 @@ app.factory('Materia', ['$http', function($http){
         }
     }
 }]);
+
+app.factory('UltimaMateria', ['$http', function($http){
+    return {
+        getPost: function(){
+            var response = $http({
+                url: ajaxurl+"&_embed",
+                method: "GET",
+                params: {action: 'getUltimaMateria'}
+            }).then(function (response){
+                return response.data;
+            });
+            return response;
+        }
+    }
+}]);
+
+app.factory('MembroEquipe', ['$http', function($http){
+    return {
+        getPost: function(){
+            var response = $http({
+                url: ajaxurl+"&_embed",
+                method: "GET",
+                params: {action: 'getMembroEquipe'}
+            }).then(function (response){
+                return response.data;
+            });
+            return response;
+        }
+    }
+}]);

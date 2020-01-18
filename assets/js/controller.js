@@ -102,22 +102,33 @@ app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope
 
 
 
-app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category', function($scope, PostProfissao,Category){
+app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category','UltimaMateria','MembroEquipe', function($scope, PostProfissao,Category,UltimaMateria,MembroEquipe){
     $scope.post;
     $scope.categorys;
-  
+    $scope.ultimaMateria;
+    $scope.membroEquipe;
+
+
 
     PostProfissao.getPost().then(function(data){
         $scope.post =data.posts[0];
-        console.log(  $scope.post);
     });
 
     Category.getCategory().then(function(data){
-        console.log("categoria");
         $scope.categorys = data.category;
 
-        console.log($scope.categorys);
         });
+
+    UltimaMateria.getPost().then(function(data){
+        $scope.ultimaMateria =  data.posts[0];
+       // console.log(data);
+        });
+
+    MembroEquipe.getPost().then(function(data){
+        $scope.membroEquipe =  data.posts[0];
+      //  console.log(data);
+        });
+
    
 
 
@@ -157,9 +168,9 @@ app.controller('MateriaInternaCtrl',['$scope','Materia','Category', function($sc
     Materia.getPost().then(function(data){
         $scope.materia = data.posts[0];
 
-        
     });
-  
+
+ 
 
     Category.getCategory().then(function(data){
         $scope.categorys = data.category;
