@@ -625,7 +625,7 @@ function getUltimaMateria()
             $aTemp->author = $p->post_author;
             //$aTemp->post_content = $p->post_content;
             $aTemp->post_content = apply_filters('the_content', $p->post_content);
-          //  $aTemp->post_excerpt = $p->post_excerpt;
+            $aTemp->post_excerpt = $p->post_excerpt;
           //  $aTemp->post_category = get_the_category( $p->ID );
             $aTemp->title = $p->post_title;
 

@@ -6,37 +6,105 @@
 
 
 get_header(); ?>
+<br><br>
+<br>
+<br>
+<br>
+<br>
 
 <div class="wrap">
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+    <div id="primary" class="content-area">
+        <div ng-controller="mainCtrl">
+            <div ng-repeat="x in lista">
+                {{x}}
+            </div>
+            <nav ng-show="totalPorPagina < totalRegistro">
+                <ul class="pagination">
+                    <li ng-repeat="p in pagina">
+                        <a href ng-click="loadListPagination($index)" style="background-color: #777;">
+                            {{$index + 1}}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+            <br>
+            <nav ng-show="totalPorPagina < totalRegistro">
+                <ul class="pagination">
+                    <li ng-repeat="p in pagina">
+                        <a ng-if="$index < 3 || ($index +1) ==pagina.length" href ng-click="loadListPagination($index)"
+                            style="background-color: #777;">
 
-				get_template_part( 'template-parts/post/content', get_post_format() );
+                            {{$index + 1}}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+            <div class="col-sm-10 pt-2 pb-4  text-center">
 
-				the_post_navigation(
-					array(
-						'prev_text' => '<span class="screen-reader-text">' . __( 'Previous Post', 'twentyseventeen' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Previous', 'twentyseventeen' ) . '</span> <span class="nav-title"><span class="nav-title-icon-wrapper">' . twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '</span>%title</span>',
-						'next_text' => '<span class="screen-reader-text">' . __( 'Next Post', 'twentyseventeen' ) . '</span><span aria-hidden="true" class="nav-subtitle">' . __( 'Next', 'twentyseventeen' ) . '</span> <span class="nav-title">%title<span class="nav-title-icon-wrapper">' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ) . '</span></span>',
-					)
-				);
+                {{pageAtual}}
+                <div class="col-md-auto   text-center mr-0 ml-0 ">
 
-			endwhile; // End of the loop.
-			?>
+                    <div class="row  justify-content-center">
+                        <div class="col-md-2  text-center mr-0 ml-0 ">
+                            <hr class="align-middle mt-4 pt-5">
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
-</div><!-- .wrap -->
+                        </div>
+                        <nav aria-label="...">
 
+                            <ul class="pagination pagination-lg rounded-0">
+
+                                <li class="page-item disabled rounded-0">
+                                <li ng-if="(pageAtual) >0" ng-click="loadListPagination(pageAtual-1)" class="page-item rounded-0"><a class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" href="#"><</a></li>
+
+                                <li ng-class="{active:(($index ) == pageAtual)}" class="page-item rounded-0" ng-repeat="p in pagina">
+                                    <a  ng-bind="$index + 1" ng-if="$index < 3 "
+                                        ng-click="loadListPagination($index)"
+                                        class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" href="#">
+                                        
+                                    </a>
+
+
+                                </li>
+
+                                <li  class=" active page-item rounded-0" ng-if="(pageAtual + 1) > 3 ">
+                                    <a ng-bind="pageAtual + 1"
+                                        
+                                        class=" page-link rounded-0 ml-2 mr-2 border-2 border border-page" href="#">
+                                        
+                                    </a>
+                                </li>
+                                <li class="page-item rounded-0" ng-if="(pageAtual + 1) <= 3 && (pageAtual + 1) > 1 ">
+                                    <a
+                                        
+                                        class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" href="#">
+                                        ...
+                                    </a>
+                                </li>
+                                <li  ng-click="loadListPagination(pagina.length-1 )" class="page-item rounded-0" ng-if="(pagina.length ) > 1 && (pageAtual+1) <pagina.length">
+                                    <a
+                                        
+                                        class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" href="#" ng-bind="pagina.length">
+                                        
+                                    </a>
+                                </li>
+
+                                <li ng-if="(pageAtual +1) <pagina.length " ng-click="loadListPagination(pageAtual+1)" class="page-item rounded-0"><a class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" href="#">></a></li>
+
+                                </li>
+
+                            </ul>
+                        </nav>
+                        <div class="col-md-2  text-center mr-0 ml-0 ">
+                            <hr class="align-middle mt-4 pt-5 ">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php
 get_footer();

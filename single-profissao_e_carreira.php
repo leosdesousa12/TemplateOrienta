@@ -83,8 +83,8 @@ get_header();
                                                     class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                                                     alt="..." style="whidth: 100%;">
                                                 <h5 class="text-left text-dark" ng-bind="ultimaMateria.title"></h5>
-                                                <h5 class="text-color text-justify font-weight-normal pb-4"
-                                                    ng-bind-html="ultimaMateria.post_excerpt"></h5>
+                                                <h6 class="text-color text-justify font-weight-normal pb-1"
+                                                    ng-bind-html="ultimaMateria.post_excerpt"></h6>
                                             </a>
 
                                         </div>
