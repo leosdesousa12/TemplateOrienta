@@ -123,3 +123,51 @@ app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category', funct
 
 
 }]);
+
+
+
+app.controller('MateriaCtrl',['$scope','Materias','Category', function($scope, Materias,Category){
+    $scope.post;
+    $scope.visivel = false;
+    $scope.materias;
+  
+    Materias.getPost().then(function(data){
+        
+        $scope.materias = data.posts;
+
+    });
+  
+
+    Category.getCategory().then(function(data){
+        $scope.categorys = data.category;
+        $scope.visivel = true;
+
+        });
+   
+
+
+
+}]);
+
+app.controller('MateriaInternaCtrl',['$scope','Materia','Category', function($scope, Materia,Category){
+    $scope.post;
+    $scope.visivel = false;
+    $scope.materia;
+  
+    Materia.getPost().then(function(data){
+        $scope.materia = data.posts[0];
+
+        
+    });
+  
+
+    Category.getCategory().then(function(data){
+        $scope.categorys = data.category;
+        $scope.visivel = true;
+
+        });
+   
+
+
+
+}]);

@@ -61,3 +61,33 @@ app.factory('PostProfissao', ['$http', function($http){
     }
 }]);
 
+app.factory('Materias', ['$http', function($http){
+    return {
+        getPost: function(){
+            var response = $http({
+                url: ajaxurl+"&_embed",
+                method: "GET",
+                params: {action: 'getMaterias'}
+            }).then(function (response){
+                return response.data;
+            });
+            return response;
+        }
+    }
+}]);
+
+
+app.factory('Materia', ['$http', function($http){
+    return {
+        getPost: function(){
+            var response = $http({
+                url: ajaxurl+"&_embed",
+                method: "GET",
+                params: {action: 'getMateria'}
+            }).then(function (response){
+                return response.data;
+            });
+            return response;
+        }
+    }
+}]);

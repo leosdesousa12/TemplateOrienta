@@ -240,6 +240,51 @@ register_post_type( 'Profissao_e_Carreira', $args );
 
 
 
+/* ____________________________ustom post type Profissões e Carreiras________________________ */
+
+
+add_action( 'init', 'custom_post_type_materias' );
+function custom_post_type_materias() {
+$labels = array(
+    'name' => _x( 'Matérias', 'Matérias' ),
+    'singular_name' => _x( 'Matérias', 'Matérias' ),
+    'add_new' => _x( 'Adcionar uma Matéria', 'Adcionar uma Matéria' ),
+    'add_new_item' => _x( 'Nova Matéria', 'Nova Matéria' ),
+    'edit_item' => _x( 'Editar Matérias', 'Editar Matérias' ),
+    'new_item' => _x( 'Nova Matérias', 'Nova Matérias' ),
+    'view_item' => _x( 'Visualizar Matérias', 'Visualizar Matérias' ),
+    'search_items' => _x( 'Procurar Matérias', 'Procurar Matérias' ),
+    'not_found' => _x( 'Matéria não encontrada', 'Maeria não encontrada' ),
+    'not_found_in_trash' => _x( 'No Matéria found in Trash', 'No Matéria found in Trash' ),
+    'parent_item_colon' => _x( 'Parent Matéria:', 'Matéria' ),
+    'menu_name' => _x( 'Matérias', 'Matéria' ),
+);
+$args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+    'description' => 'Hi, this is my custom post type.',
+    'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'comments', 'page-attributes' ),
+    'taxonomies' => array( 'category', 'page-category' ),
+    'public' => true,
+    'menu_icon'      => 'dashicons-id',
+    'show_ui' => true,
+    'show_in_menu' => true,
+    'show_in_nav_menus' => true,
+    'publicly_queryable' => true,
+    'exclude_from_search' => false,
+    'has_archive' => true,
+    'query_var' => true,
+    'can_export' => true,
+    'rewrite' => true,
+    'capability_type' => 'post'
+    );
+register_post_type( 'materia', $args );
+}
+
+
+
+/*____________________________________________________________________________________________ */
+
 
 
 
@@ -439,5 +484,118 @@ function getPostProfissao()
 }
 add_action( "wp_ajax_nopriv_getPostProfissao", "getPostProfissao");
 add_action( "wp_ajax_getPostProfissao","getPostProfissao");
+
+
+
+
+function getMaterias()
+{
+    session_start();
+
+    header("Content-Type: application/json");
+
+    $args = array(
+        'post_type' => 'materia',
+        'cat' => $cat_id,
+        
+    );
+
+    $pt = [',', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']; 
+    $en = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    $data = DateTime::createFromFormat('d F Y', str_ireplace($pt, $en,'22 maio, 2018'));
+  //  echo $data->format('Y-m-d');
+
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+            $thumb_id = (int)get_post_thumbnail_id($p->ID);
+            $aTemp->post_id = $p->ID;        
+            $aTemp->author = $p->post_author;
+            //$aTemp->post_content = $p->post_content;
+            $aTemp->post_content = apply_filters('the_content', $p->post_content);
+            $aTemp->post_excerpt = $p->post_excerpt;
+            $aTemp->post_category = get_the_category( $p->ID );
+            $aTemp->title = $p->post_title;
+
+            $ano = substr($p->post_modified,0,4);
+            $dia = substr($p->post_modified,8,2);
+            $mes = intval(substr($p->post_modified,5,2)); 
+            $aTemp->data = $dia." de ".$pt[$mes]." de ".$ano;
+            $aTemp->link = get_permalink($p);
+            $aTemp->comment_count = $p->comment_count;	
+            $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
+            $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
+
+            $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
+            $oReturn->posts[] = $aTemp;
+        
+    
+      }
+      unset($_SESSION["postId"]);
+
+      echo json_encode( $oReturn );
+
+    die();
+}
+add_action( "wp_ajax_nopriv_getMaterias", "getMaterias");
+add_action( "wp_ajax_getMaterias","getMaterias");
+
+function getMateria()
+{
+    session_start();
+
+    header("Content-Type: application/json");
+
+    $args = array(
+        'post_type' => 'materia',
+        'cat' => $cat_id,
+        
+    );
+
+    $pt = [',', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']; 
+    $en = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    $data = DateTime::createFromFormat('d F Y', str_ireplace($pt, $en,'22 maio, 2018'));
+  //  echo $data->format('Y-m-d');
+
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+        if($_SESSION["postId"] ==$p->ID ){
+            $thumb_id = (int)get_post_thumbnail_id($p->ID);
+            $aTemp->post_id = $p->ID;        
+            $aTemp->author = $p->post_author;
+            //$aTemp->post_content = $p->post_content;
+            $aTemp->post_content = apply_filters('the_content', $p->post_content);
+            $aTemp->post_excerpt = $p->post_excerpt;
+            $aTemp->post_category = get_the_category( $p->ID );
+            $aTemp->title = $p->post_title;
+
+            $ano = substr($p->post_modified,0,4);
+            $dia = substr($p->post_modified,8,2);
+            $mes = intval(substr($p->post_modified,5,2)); 
+            $aTemp->data = $dia." de ".$pt[$mes]." de ".$ano;
+            $aTemp->link = get_permalink($p);
+            $aTemp->comment_count = $p->comment_count;	
+            $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
+            $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
+
+            $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
+            $oReturn->posts[] = $aTemp;
+        }
+        
+    
+      }
+      unset($_SESSION["postId"]);
+
+      echo json_encode( $oReturn );
+
+    die();
+}
+add_action( "wp_ajax_nopriv_getMateria", "getMateria");
+add_action( "wp_ajax_getMateria","getMateria");
 
 ?>

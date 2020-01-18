@@ -45,7 +45,8 @@ get_header();
 
                                             <h5 class="text-left text-dark">Categorias</h5>
                                             <div class="text-left " ng-repeat="category in categorys | limitTo: 3">
-                                                <p class="text-left text-color text-normal">- {{category.post_category.name}}</p>
+                                                <p class="text-left text-color text-normal">-
+                                                    {{category.post_category.name}}</p>
                                             </div>
 
                                         </div>
