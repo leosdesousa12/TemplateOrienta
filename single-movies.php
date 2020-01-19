@@ -18,32 +18,9 @@ get_header(); ?>
             <div ng-repeat="x in lista">
                 {{x}}
             </div>
-            <nav ng-show="totalPorPagina < totalRegistro">
-                <ul class="pagination">
-                    <li ng-repeat="p in pagina">
-                        <a href ng-click="loadListPagination($index)" style="background-color: #777;">
-                            {{$index + 1}}
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <br>
-            <nav ng-show="totalPorPagina < totalRegistro">
-                <ul class="pagination">
-                    <li ng-repeat="p in pagina">
-                        <a ng-if="$index < 3 || ($index +1) ==pagina.length" href ng-click="loadListPagination($index)"
-                            style="background-color: #777;">
-
-                            {{$index + 1}}
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+       
 
             <div class="col-sm-10 pt-2 pb-4  text-center">
-
-                {{pageAtual}}
                 <div class="col-md-auto   text-center mr-0 ml-0 ">
 
                     <div class="row  justify-content-center">

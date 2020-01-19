@@ -24,27 +24,53 @@ app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope
     $scope.categoryFilter = -1;
     $scope.pesquisa;
     $scope.paginas=[];
+    $scope.lista =[];
+    var c = [];
     //$scope.listaPostsFilter = []
   
    Profissao.getPosts().then(function(data){
     $scope.listaPosts = data.posts;
-    console.log($scope.listaPosts.length);
+    $scope.carregarLista(angular.copy($scope.listaPosts));
 
     });
 
     Category.getCategory().then(function(data){
         $scope.categorys = data.category;
-
-       // console.log($scope.titleProfissao);
         });
 
-    $scope.lista = function(category){
+    $scope.listaCategory = function(category){
+        //console.log(category);
         $scope.titleProfissao = category.post_category.name;
-    // console.log(category.post_category);
         $scope.categoryFilter = category.post_category.term_id;
+        
+       var listLocal = [];
+       // console.log($scope.listaPosts);
+
+        $scope.listaPosts.forEach(element => {
+            element.post_category.forEach(categoria => {
+
+                if($scope.categoryFilter == categoria.cat_ID){
+                    //console.log(categoria);
+
+                  listLocal.push(element);
+                }
+            });
+        });
+        $scope.carregarLista(angular.copy(listLocal));
+
+
 
     }
+    $scope.filter = function (item) { 
+        var localList= [];
+        $scope.listaPosts.forEach(element => {
+            if($scope.customFilter(element)){
+                localList.push(element);
+            }
+        });
+        $scope.carregarLista(angular.copy(localList));
 
+    }
     $scope.myFilter = function (item) { 
         //console.log($scope.pesquisa);
         if($scope.pesquisa){
@@ -94,8 +120,34 @@ app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope
         return false;
     }
 
+   /* var c = [{'a':1},{'a':2},{'a':3},{'a':4},{'a':5},{'a':6},{'a':7},{'a':8},{'a':9},{'a':10},{'a':11},{'a':12},
+{'a':1},{'a':2},{'a':3},{'a':4},{'a':5},{'a':6},{'a':7},{'a':8},{'a':9},{'a':10},{'a':11},{'a':12}];
+*/
 
-  
+$scope.carregarLista = function(list){
+    c = list;
+    $scope.totalPorPagina = 6;
+    $scope.totalRegistro = c.length;
+    $scope.pageAtual = 0;
+    $scope.pagina = [];
+    var p = $scope.totalRegistro > $scope.totalPorPagina ? Math.ceil($scope.totalRegistro / $scope.totalPorPagina) : 1;
+    for (var i = 0; i < p; i++) {
+        $scope.pagina.push(c.splice(0, $scope.totalPorPagina));
+    }
+    $scope.lista = $scope.pagina[0];
+
+}
+//função chamada no ngClick;
+$scope.loadListPagination = function (i) {
+    //console.log(i);    
+    $scope.pageAtual = i;
+        
+        $scope.lista = $scope.pagina[i];
+       
+    };
+
+
+ // console.log( $scope.lista);
 
 }]);
 
