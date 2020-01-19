@@ -605,9 +605,8 @@ function getUltimaMateria()
     $args = array(
         'post_type' => 'materia',
         'orderby'      => 'date',  
-        'order'        => 'ASC',
+        'order'        => 'DEC',
         'posts_per_page' => '1',
-        'offset' => '1'        
     );
 
     $pt = [',', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']; 

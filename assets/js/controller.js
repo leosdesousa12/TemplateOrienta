@@ -193,10 +193,13 @@ app.controller('MateriaCtrl',['$scope','Materias','Category', function($scope, M
     $scope.post;
     $scope.visivel = false;
     $scope.materias;
+    $scope.lista=[];
   
     Materias.getPost().then(function(data){
         
         $scope.materias = data.posts;
+        $scope.carregarLista(angular.copy($scope.materias));
+
 
     });
   
@@ -206,6 +209,30 @@ app.controller('MateriaCtrl',['$scope','Materias','Category', function($scope, M
         $scope.visivel = true;
 
         });
+
+
+$scope.carregarLista = function(list){
+    c = list;
+    $scope.totalPorPagina = 3;
+    $scope.totalRegistro = c.length;
+    $scope.pageAtual = 0;
+    $scope.pagina = [];
+    var p = $scope.totalRegistro > $scope.totalPorPagina ? Math.ceil($scope.totalRegistro / $scope.totalPorPagina) : 1;
+    for (var i = 0; i < p; i++) {
+        $scope.pagina.push(c.splice(0, $scope.totalPorPagina));
+    }
+    $scope.lista = $scope.pagina[0];
+
+}
+//função chamada no ngClick;
+$scope.loadListPagination = function (i) {
+    //console.log(i);    
+    $scope.pageAtual = i;
+        
+        $scope.lista = $scope.pagina[i];
+       
+    };
+
    
 
 

@@ -19,7 +19,7 @@ get_header();
 ?>
 
 
-    <section class="page-section mt-8" id="contact" >
+    <section class="page-section mt-8" id="contact">
         <div class="container mt-8 ">
             <h1 class="text-center text-primary mb-2 mt-4" ng-bind="titleProfissao"></h1>
 
@@ -28,7 +28,7 @@ get_header();
                     <div class="col-md-auto   text-center mr-0 ml-0 ">
                         <div class="row  justify-content-center" ng-if="visivel">
                             <div class="row">
-                                <div  class="col-sm-8 pt-4 mt-4" style=" background: #fff;  min-width:50%;">
+                                <div class="col-sm-8 pt-4 mt-4" style=" background: #fff;  min-width:50%;">
                                     <img ng-src="{{materia.photo[0]}}"
                                         class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                                         alt="..." style="whidth: 100%;">
@@ -60,6 +60,8 @@ get_header();
                     </div>
                 </div>
             </div>
+
+            
         </div>
 
     </section>
