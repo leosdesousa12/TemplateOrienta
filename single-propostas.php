@@ -1,4 +1,3 @@
-<?php /* Template name: proposta */?>
 <?php get_header(); ?>
 
   <!-- Contact Section -->

@@ -1,4 +1,3 @@
-<?php /* Template name: equipe */?>
 <?php get_header(); ?>
 
 
