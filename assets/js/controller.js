@@ -289,3 +289,20 @@ $scope.loadListPagination = function (i) {
 
 
 
+
+app.controller('mainCtrl',['$scope','Materias','Category', function($scope, Materias,Category){
+    $scope.post;
+    $scope.visivel = false;
+    $scope.materias;
+    $scope.lista=[];
+  
+    Materias.getPost().then(function(data){
+        
+        $scope.materias = data.posts;
+        console.log($scope.materias);
+
+    });  
+
+
+
+}]);
