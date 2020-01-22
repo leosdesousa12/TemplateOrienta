@@ -71,48 +71,47 @@
         <div class="container text-center">
             <div class="row  ">
                 <div class="col-md-12 text-center">
-                <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
-  <div class="carousel-inner w-100" role="listbox">
-    <div class="carousel-item active">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="http://placehold.it/350x180?text=1">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="http://placehold.it/350x180?text=2">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="http://placehold.it/350x180?text=3">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="http://placehold.it/350x180?text=4">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="http://placehold.it/350x180?text=5">
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="col-lg-4 col-md-6">
-        <img class="img-fluid" src="http://placehold.it/350x180?text=6">
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev bg-dark w-auto" href="#myCarousel" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next bg-dark w-auto" href="#myCarousel" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>                </div>
+                    <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
+                        <div class="carousel-inner w-100" role="listbox">
+                            <!--<div class="carousel-item active">
+                                <div class="col-lg-4 col-md-6">
+                                    <img class="img-fluid" src="http://placehold.it/350x180?text=1">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="col-lg-4 col-md-6">
+                                    <img class="img-fluid" src="http://placehold.it/350x180?text=2">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="col-lg-4 col-md-6">
+                                    <img class="img-fluid" src="http://placehold.it/350x180?text=3">
+                                </div>
+                            </div>-->
+
+                            <div class="carousel-item " ng-class="{'active text-primary':(($index ) == 0)}"
+                                ng-repeat="post in posts">
+
+                                <div class="col-lg-4 col-md-6">
+                                <img class="img-fluid" ng-src="{{post.image[0]}}">
+                                </div>
+                            </div>
+                           
+                        </div>
+
+
+                        <a class="carousel-control-prev bg-dark w-auto" href="#myCarousel" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next bg-dark w-auto" href="#myCarousel" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </div>
