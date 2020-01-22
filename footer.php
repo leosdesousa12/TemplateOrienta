@@ -94,9 +94,11 @@ jQuery('.mais-noticias').on('click', function(e) {
   <!-- Contact Form JavaScript -->
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/jqBootstrapValidation.js"></script>
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/contact_me.js"></script>
+  
 
   <!-- Custom scripts for this template -->
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/freelancer.js"></script>
+  
 
 </body>
 

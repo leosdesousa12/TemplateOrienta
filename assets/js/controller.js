@@ -1,7 +1,6 @@
 app.controller('HomeCtrl',['$scope','Posts', function($scope, Posts){
     $scope.posts;
     $scope.postPrincipal;
-    $scope.ID= 93;
 
     Posts.getPosts().then(function(data){
         $scope.posts =data.posts;
@@ -290,11 +289,20 @@ $scope.loadListPagination = function (i) {
 
 
 
-app.controller('mainCtrl',['$scope','getFourmaMateria','Category', function($scope, getFourmaMateria,Category){
-    $scope.post;
+app.controller('mainCtrl',['$scope','getFourmaMateria','PostsMain', function($scope, getFourmaMateria,PostsMain){
     $scope.visivel = false;
     $scope.materias;
     $scope.lista=[];
+
+    $scope.posts=[];
+
+    PostsMain.getPosts().then(function(data){
+        $scope.posts =data.posts;
+        console.log(  $scope.posts );
+    });
+
+    
+
   
     getFourmaMateria.getPost().then(function(data){
         
