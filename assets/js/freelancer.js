@@ -63,10 +63,10 @@
 })(jQuery); // End of use strict
 
 $('#myCarousel').carousel({
-  interval: 3000
+  interval: 6000
 })
-var delay=1000; //1 seconds
-setTimeout(function(){
+var i = 1;
+var timer = setInterval(function() {
   $('.carousel .carousel-item').each(function() {  
   
     var minPerSlide = 1;
@@ -85,4 +85,10 @@ setTimeout(function(){
         next.children(':first-child').clone().appendTo($(this));
     }
   });
+
+  }, 2000);
+
+var delay=1000; //1 seconds
+setTimeout(function(){
+ 
 },delay);

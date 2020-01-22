@@ -321,14 +321,6 @@ function test_ajax()
         'compare' => '>=',
         
       );
-      $image = wp_get_attachment_image_src( get_post_thumbnail_id( $_post->ID ));
-      $thumbs = array(
-        'post_type' => 'Propostas',
-        'orderby'      => 'date',  
-        'order'        => 'DESC',
-        'post_mime_type' => 'image',
-
-);
       $posts_array = new WP_Query($args );
       foreach($posts_array->posts as $p){
          
@@ -340,6 +332,7 @@ function test_ajax()
         $aTemp->post_content = apply_filters('the_content', $p->post_content);
         $aTemp->post_excerpt = $p->post_excerpt;
         $aTemp->title = $p->post_title;
+        $aTemp->color = get_field('color-proposta', $p->ID);
 
      //   $aTemp->comment_count = $p->comment_count;	
         $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
@@ -369,14 +362,8 @@ function getProfissao()
         'cat' => $cat_id,
         
       );
-      $image = wp_get_attachment_image_src( get_post_thumbnail_id( $_post->ID ));
-      $thumbs = array(
-        'post_type' => 'Propostas',
-        'orderby'      => 'date',  
-        'order'        => 'DESC',
-        'post_mime_type' => 'image',
 
-);
+
       $posts_array = new WP_Query($args );
       foreach($posts_array->posts as $p){
          
@@ -392,7 +379,6 @@ function getProfissao()
         $aTemp->title = $p->post_title;
        // $aTemp->link = $p->guid;
         $aTemp->link = get_permalink($p);
-
        // $aTemp->comment_count = $p->comment_count;	
         $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
         $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');

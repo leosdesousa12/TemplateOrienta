@@ -92,22 +92,31 @@
                             <div class="carousel-item " ng-class="{'active text-primary':(($index ) == 0)}"
                                 ng-repeat="post in posts">
 
-                                <div class="col-lg-4 col-md-6">
-                                <img class="img-fluid" ng-src="{{post.image[0]}}">
+                                <div class="col-lg-4 col-md-6 border-0 mr-0 pr-0 ml-0 pl-0"
+                                    ng-style="{'background': post.color}">
+                                    <div class=" text-center" style="background: post.color;">
+                                        <img class="card-img img-fluid img-thumbnail pt-4 mt-0 pt-0 mb-0 pb-0 border-0 rounded-0  "
+                                            style="width: 200px;" ng-src="{{post.image[0]}}" ng-style="{'background': post.color}" />
+                                        <div class="card-body "
+                                        ng-style="{'background': post.color}">
+                                            <h5 class="card-text text-center text-white" ng-bind="post.title">
+                                            </h5>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                           
+
                         </div>
 
 
                         <a class="carousel-control-prev bg-dark w-auto" href="#myCarousel" role="button"
                             data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-prev-icon text-center ml-3 pl-3" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
                         <a class="carousel-control-next bg-dark w-auto" href="#myCarousel" role="button"
                             data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon text-center ml-3 pl-3" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
