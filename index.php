@@ -64,15 +64,48 @@
                 </div>
             </div>
     </section>
+    <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#imageCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#imageCarousel" data-slide-to="1"></li>
+                                <li data-target="#imageCarousel" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="https://1.bp.blogspot.com/-E8GdZQshD7I/WI1-yGMXseI/AAAAAAAACfs/ZndWplkyLpgVPO5IQ294pjxr9rq8YtqcwCLcB/s640/boot1.png"
+                                                class="img-responsive" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img src="https://2.bp.blogspot.com/-hmUAa7DH5N4/WI2KJqMdhrI/AAAAAAAACf8/huv-RB55G_QpCI-9G-iA0JrS1pqCswEogCLcB/s640/boot2.png"
+                                                class="img-responsive" />
+                                        </div>
+                                        <div class="col-md-4">
+                                            <img src="https://2.bp.blogspot.com/-ZWboxYj_gz0/WInKMMQA_HI/AAAAAAAACe4/4ihHdvifuKYJNQElLULtivsCne9ZDbM3ACLcB/s640/di.png"
+                                                class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <a class="left carousel-control" href="#imageCarousel" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#imageCarousel" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
 
-
-    <div class="container">
+    <div class="container text-center ">
 
         <!-- Portfolio Section Heading -->
-        <h1 class="text-center font-weight-normal text-primary pb-3">MATÉRIAS</h1>
+        <h1 class="text-center font-weight-normal text-primary pb-2">MATÉRIAS</h1>
         <div class="container">
             <div class="row  justify-content-center">
-                <div class="card border-0 rounded-0 pt-4 mt-4" style="max-width: 400px; " ng-repeat="materia in materias">
+                <div class="card border-0 rounded-0 pt-2 mt-2" style="max-width: 550px; " ng-repeat="materia in materias | limitTo: 4">
                     <a href="{{materia.link}}" class="pr-1">
                         <img ng-src="{{materia.photo[0]}}"
                             class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
@@ -86,6 +119,9 @@
                
 
             </div>
+            <div ng-if="materias.length > 4">
+            <a  href="<?php echo get_permalink( get_page_by_title( 'MATÉRIAS' ) );?>"><button type="button" class=" btn btn-primary btn-lg border-0 rounded-0 text-dark font-weight-normal" style=" background: #eceeed;">ver todas as matérias</button></a>
+</div>
         </div>
     </div>
 

@@ -651,6 +651,60 @@ function getUltimaMateria()
 add_action( "wp_ajax_nopriv_getUltimaMateria", "getUltimaMateria");
 add_action( "wp_ajax_getUltimaMateria","getUltimaMateria");
 
+function getFourmaMateria()
+{
+    header("Content-Type: application/json");
+
+    $args = array(
+        'post_type' => 'materia',
+        'orderby'      => 'date',  
+        'order'        => 'DEC',
+        'posts_per_page' => '5',
+    );
+
+    $pt = [',', 'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']; 
+    $en = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    $data = DateTime::createFromFormat('d F Y', str_ireplace($pt, $en,'22 maio, 2018'));
+  //  echo $data->format('Y-m-d');
+
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+            $thumb_id = (int)get_post_thumbnail_id($p->ID);
+            $aTemp->post_id = $p->ID;        
+            $aTemp->author = $p->post_author;
+            //$aTemp->post_content = $p->post_content;
+            $aTemp->post_content = apply_filters('the_content', $p->post_content);
+            $aTemp->post_excerpt = $p->post_excerpt;
+          //  $aTemp->post_category = get_the_category( $p->ID );
+            $aTemp->title = $p->post_title;
+
+            $ano = substr($p->post_modified,0,4);
+            $dia = substr($p->post_modified,8,2);
+            $mes = intval(substr($p->post_modified,5,2)); 
+            $aTemp->data = $dia." de ".$pt[$mes]." de ".$ano;
+            $aTemp->link = get_permalink($p);
+          //  $aTemp->comment_count = $p->comment_count;	
+            $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
+            $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
+
+            $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
+            $oReturn->posts[] = $aTemp;
+        
+        
+    
+      }
+
+      echo json_encode( $oReturn );
+
+    die();
+}
+add_action( "wp_ajax_nopriv_getFourmaMateria", "getFourmaMateria");
+add_action( "wp_ajax_getFourmaMateria","getFourmaMateria");
+
+
 
 function getMembroEquipe()
 {

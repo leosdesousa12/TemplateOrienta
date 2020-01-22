@@ -107,6 +107,23 @@ app.factory('UltimaMateria', ['$http', function($http){
     }
 }]);
 
+
+app.factory('getFourmaMateria', ['$http', function($http){
+    return {
+        getPost: function(){
+            var response = $http({
+                url: ajaxurl+"&_embed",
+                method: "GET",
+                params: {action: 'getFourmaMateria'}
+            }).then(function (response){
+                return response.data;
+            });
+            return response;
+        }
+    }
+}]);
+
+
 app.factory('MembroEquipe', ['$http', function($http){
     return {
         getPost: function(){
