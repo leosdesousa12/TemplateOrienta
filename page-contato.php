@@ -69,7 +69,7 @@ get_header();
                                         <div class="form-group">
                                             <h6 class="text-dark text-left font-weight-normal pt-3">Mensagem</h6>
                                             <textarea class="form-control border-0" id="exampleFormControlTextarea1"
-                                                rows="3" style="background: #eceeed;"></textarea>
+                                                rows="3" style="background: #eceeed; min-height:200px; resize: none;"></textarea>
                                         </div>
                                     </form>
                                     <div class="row">
@@ -83,12 +83,12 @@ get_header();
                                         <div class="col-sm-2">
                                             <div class="form-group text-dark">
                                                 <input type="email" class="form-control text-dark border-0 text-center" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" value="2+2" style="background: #eceeed; color: #000000 !important; ">
+                                                    aria-describedby="emailHelp" value="2+2" style="background: #eceeed;  color: #000000 !important; ">
                                             </div>
                                         </div>
                                         <div class="col-sm-5 text-right">
-                                            <button type="submit" class="btn btn-primary btn-lg text-right "
-                                                style="background: #25bcbd;">enviar</button>
+                                            <button type="submit" class="btn btn-primary btn-lg text-center "
+                                                style="background: #25bcbd; min-width:120px;">enviar</button>
 
                                         </div>
                                     </div>
