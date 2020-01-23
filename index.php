@@ -4,7 +4,7 @@
 ?>
 
     <!-- Masthead -->
-    <header class="text-white text-center mt-5">
+    <header class="text-white text-center pt-5 mt-5">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -36,7 +36,7 @@
         <div class="container">
 
             <!-- Portfolio Section Heading -->
-            <h1 class="text-center font-weight-normal text-primary pb-3">EQUIPE</h1>
+            <h1 class="text-center font-weight-normal text-primary pb-1">EQUIPE</h1>
             <div class="container">
                 <div class="row justify-content-md-center">
                     <?php query_posts('post_type=equipe&post_per_page=-1'); ?>
@@ -64,10 +64,10 @@
                 </div>
             </div>
     </section>
-    <div class="container text-center pb-3 ">
+    <div class="container text-center pb-3 mb-3 ">
 
         <!-- Portfolio Section Heading -->
-        <h1 class="text-center font-weight-normal text-primary pb-2">PROPOSTAS</h1>
+        <h1 class="text-center font-weight-normal text-primary ">PROPOSTAS</h1>
         <div class="container text-center">
             <div class="row  ">
                 <div class="col-md-12 text-center">
@@ -126,10 +126,10 @@
         </div>
     </div>
 
-    <div class="container text-center ">
+    <div class="container text-center mt-3 pt-3 ">
 
         <!-- Portfolio Section Heading -->
-        <h1 class="text-center font-weight-normal text-primary pb-2">MATÉRIAS</h1>
+        <h1 class="text-center font-weight-normal text-primary mt-3 pt-3  pb-2">MATÉRIAS</h1>
         <div class="container">
             <div class="row  justify-content-center">
                 <div class="card border-0 rounded-0 pt-2 mt-2" style="max-width: 550px; "
@@ -138,8 +138,8 @@
                         <img ng-src="{{materia.photo[0]}}"
                             class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                             alt="..." style="width: 723px; height:300px ">
-                        <h5 class="text-left text-dark" ng-bind="materia.title"></h5>
-                        <h6 class="text-color text-justify font-weight-normal pb-1" ng-bind-html="materia.post_excerpt">
+                        <h5 class="text-left text-dark ml-2" ng-bind="materia.title"></h5>
+                        <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1" ng-bind-html="materia.post_excerpt">
                         </h6>
                     </a>
 

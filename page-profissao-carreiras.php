@@ -4,7 +4,7 @@
 <section class="page-section mt-8" id="contact">
     <div ng-controller="ProfissaoCtrl">
         <div class="container mt-8 ">
-            <h1 class="text-center text-primary mb-2 mt-4" ng-bind="titleProfissao"></h1>
+            <h1 class="text-center text-primary mb-2 mt-4 font-weight-normal " ng-bind="titleProfissao"></h1>
             <div class="row  justify-content-md-center">
                 <div class="col-sm-10 pt-2 pb-4  text-center" style=" background: #eceeed;">
                     <div class="col-md-auto   text-center mr-0 ml-0 " style=" background: #eceeed;">

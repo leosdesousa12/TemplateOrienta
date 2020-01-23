@@ -31,15 +31,15 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-light text-dark  navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-      <!--<a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>-->
-      <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_normal.png" width="280" height="auto" alt="">
-      <button class="navbar-toggler navbar-toggler-right text-uppercase  bg-secondary text-dark rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="container pl-3 ml-5 pr-0 mr-0 ">
+      <a class="" href="<?php echo get_site_url(); ?>">
+      <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_normal.png" width="280" height="auto" alt=""></a>
+      <button class=" text-left ml-0 mt-2 navbar-toggler navbar-toggler-left text-uppercase  bg-secondary text-dark rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
-        <i class="fas fa-bars"></i>
+        <i class="fa fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mr-0 pr-0 ">
           <!--<li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="equipe.php">EQUIPE</a>
           </li>
@@ -57,15 +57,15 @@
           </li>-->
           <?php wp_nav_menu(
               array('theme_location' => 'header-meu',
-                     'menu_class'     => 'navbar-nav ml-auto nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger'
+                     'menu_class'     => 'font-weight-bold navbar-nav ml-auto nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger'
               )
           ); ?>
          
           <li class="nav-item mx-0 mx-lg-1">
-            <a href="#"  class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger fa fa-facebook color bg-info rounded-circle "  ></a>
+            <a href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/"  class=" fa fa-facebook color bg-info rounded-circle "  style="color: white;" ></a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a href="#"  class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger js-scroll-trigger fa fa-instagram color bg-info rounded-circle" ></a>
+          <li class="nav-item mx-0 mx-lg-1 pr-2">
+            <a href="https://www.instagram.com/orientaescolhaprofissional/"  class=" btn btn-outline-light btn-social mx-1 border-0 nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger js-scroll-trigger fa fa-instagram color bg-info rounded-circle" style="color: white;" ></a>
           </li>
           
         </ul>
