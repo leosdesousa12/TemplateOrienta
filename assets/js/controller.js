@@ -16,7 +16,6 @@ app.controller('HomeCtrl',['$scope','Posts', function($scope, Posts){
 }]);
 
 app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope, Profissao, Category){
-   console.log("Profissao e carreira");
     $scope.titleProfissao = "Profissões e Carreiras";
     $scope.listaPosts =[];
     $scope.categorys;
@@ -38,18 +37,15 @@ app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope
         });
 
     $scope.listaCategory = function(category){
-        //console.log(category);
         $scope.titleProfissao = category.post_category.name;
         $scope.categoryFilter = category.post_category.term_id;
         
        var listLocal = [];
-       // console.log($scope.listaPosts);
 
         $scope.listaPosts.forEach(element => {
             element.post_category.forEach(categoria => {
 
                 if($scope.categoryFilter == categoria.cat_ID){
-                    //console.log(categoria);
 
                   listLocal.push(element);
                 }
@@ -71,7 +67,6 @@ app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope
 
     }
     $scope.myFilter = function (item) { 
-        //console.log($scope.pesquisa);
         if($scope.pesquisa){
             if(item.title ==$scope.pesquisa ){
             }
@@ -103,7 +98,6 @@ app.controller('ProfissaoCtrl',['$scope','Profissao','Category', function($scope
             }
             return matchOnValue;
             }
-        // console.log("elemento");
             flag = false;
             item.post_category.forEach(element => {
 
@@ -138,7 +132,6 @@ $scope.carregarLista = function(list){
 }
 //função chamada no ngClick;
 $scope.loadListPagination = function (i) {
-    //console.log(i);    
     $scope.pageAtual = i;
         
         $scope.lista = $scope.pagina[i];
@@ -146,7 +139,6 @@ $scope.loadListPagination = function (i) {
     };
 
 
- // console.log( $scope.lista);
 
 }]);
 
@@ -163,7 +155,6 @@ app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category','Ultim
 
     Profissao.getPosts().then(function(data){
         $scope.listaPosts = data.posts;
-        console.log($scope.listaPosts );
     
     });
 
@@ -178,12 +169,10 @@ app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category','Ultim
 
     UltimaMateria.getPost().then(function(data){
         $scope.ultimaMateria =  data.posts[0];
-       // console.log(data);
         });
 
     MembroEquipe.getPost().then(function(data){
         $scope.membroEquipe =  data.posts[0];
-      //  console.log(data);
         });
 
    
@@ -248,7 +237,6 @@ $scope.carregarLista = function(list){
 }
 //função chamada no ngClick;
 $scope.loadListPagination = function (i) {
-    //console.log(i);    
     $scope.pageAtual = i;
         
         $scope.lista = $scope.pagina[i];
@@ -300,7 +288,6 @@ for (var i = 0; i < p; i++) {
 $scope.lista = $scope.pagina[0];
 //função chamada no ngClick;
 $scope.loadListPagination = function (i) {
-    console.log(i);    
     $scope.pageAtual = i;
         
         $scope.lista = $scope.pagina[i];
@@ -321,7 +308,6 @@ app.controller('mainCtrl',['$scope','getFourmaMateria','PostsMain', function($sc
 
     PostsMain.getPosts().then(function(data){
         $scope.posts =data.posts;
-        console.log(  $scope.posts );
     });
 
     
@@ -330,7 +316,6 @@ app.controller('mainCtrl',['$scope','getFourmaMateria','PostsMain', function($sc
     getFourmaMateria.getPost().then(function(data){
         
         $scope.materias = data.posts;
-        console.log($scope.materias);
 
     });  
 
@@ -344,13 +329,11 @@ $scope.a =  Math.floor((Math.random()*6)+1);
 $scope.b =  Math.floor((Math.random()*6)+1);
 $scope.result ;
 $scope.membroEquipe = [];
-console.log($scope.a);
-console.log($scope.b);
+
 
 
 MembroEquipe.getPost().then(function(data){
     $scope.membroEquipe =  data.posts[0];
-  //  console.log(data);
     });
 
 }]);
