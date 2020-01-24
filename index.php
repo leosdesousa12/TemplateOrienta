@@ -47,7 +47,7 @@ $decoded = json_decode($videoList, true);
     </header>
 
     <!-- equipe Section -->
-    <section class="page-section equipe" id="equipe">
+    <section class="page-section equipe pb-5" id="equipe">
         <div class="container">
 
             <!-- Portfolio Section Heading -->
@@ -79,7 +79,7 @@ $decoded = json_decode($videoList, true);
                 </div>
             </div>
     </section>
-    <div class="container text-center pb-3 mb-3 ">
+    <div class="container text-center pb-3 mb-3 mt-0 pt-0">
 
         <!-- Portfolio Section Heading -->
         <h1 class="text-center font-weight-normal text-primary ">PROPOSTAS</h1>

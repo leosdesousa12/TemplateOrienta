@@ -8,7 +8,7 @@ get_header();
 
 
 <section class="page-section mt-8" id="contact">
-    <div ng-controller="ProfissaoIternaCtrl">
+    <div ng-controller="ContatoCtrl">
         <div class="container mt-8 ">
             <h1 class="text-center text-primary mb-2 mt-4 pt-4" ng-bind="titleProfissao"></h1>
 
@@ -82,12 +82,12 @@ get_header();
                                         </div>
                                         <div class="col-sm-2">
                                             <div class="form-group text-dark">
-                                                <input type="email" class="form-control text-dark border-0 text-center" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" value="2+2" style="background: #eceeed;  color: #000000 !important; ">
+                                                <input type="contato" class="form-control text-dark border-0 text-center contato" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" ng-model="result" placeholder="{{a +' + '+b}}" style="background: #eceeed;  color: #000000 !important; ">
                                             </div>
                                         </div>
                                         <div class="col-sm-5 text-right">
-                                            <button type="submit" class="btn btn-primary btn-lg text-center "
+                                            <button ng-disabled="!(result == (a+b))" type="submit" class="btn btn-primary btn-lg text-center "
                                                 style="background: #25bcbd; min-width:120px;">enviar</button>
 
                                         </div>

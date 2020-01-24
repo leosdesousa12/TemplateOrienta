@@ -359,7 +359,6 @@ function getProfissao()
     echo json_encode( $posts_array );*/
     $args = array(
         'post_type' => 'Profissao_e_Carreira',
-        'cat' => $cat_id,
         
       );
 

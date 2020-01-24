@@ -153,13 +153,19 @@ $scope.loadListPagination = function (i) {
 
 
 
-app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category','UltimaMateria','MembroEquipe', function($scope, PostProfissao,Category,UltimaMateria,MembroEquipe){
+app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category','UltimaMateria','MembroEquipe', 'Profissao',function($scope, PostProfissao,Category,UltimaMateria,MembroEquipe,Profissao){
     $scope.post;
     $scope.categorys;
     $scope.ultimaMateria;
     $scope.membroEquipe;
+    $scope.listaPosts=[];
+    $scope.pesquisa;
 
-
+    Profissao.getPosts().then(function(data){
+        $scope.listaPosts = data.posts;
+        console.log($scope.listaPosts );
+    
+    });
 
     PostProfissao.getPost().then(function(data){
         $scope.post =data.posts[0];
@@ -181,7 +187,24 @@ app.controller('ProfissaoIternaCtrl',['$scope','PostProfissao','Category','Ultim
         });
 
    
-
+        $scope.customFilter = function (item) {
+            if (!$scope.pesquisa) {// your input field is empty or no checkbox checked
+                return true;
+            }
+                var searchVal = $scope.pesquisa;
+                searchVal = searchVal.replace(/([()[{*+.$^\\|?])/g, '\\$1'); //special char
+    
+                var regex = new RegExp('' + searchVal, 'i');
+    
+                var matchOnValue = false; 
+    
+                if ($scope.pesquisa) {
+                matchOnValue = regex.test(item.title);
+                }
+                return matchOnValue;
+            
+        }
+    
 
 
 }]);
@@ -314,3 +337,22 @@ app.controller('mainCtrl',['$scope','getFourmaMateria','PostsMain', function($sc
 
 
 }]);
+
+
+app.controller('ContatoCtrl',['$scope','MembroEquipe', function($scope,MembroEquipe){
+$scope.a =  Math.floor((Math.random()*6)+1);
+$scope.b =  Math.floor((Math.random()*6)+1);
+$scope.result ;
+$scope.membroEquipe = [];
+console.log($scope.a);
+console.log($scope.b);
+
+
+MembroEquipe.getPost().then(function(data){
+    $scope.membroEquipe =  data.posts[0];
+  //  console.log(data);
+    });
+
+}]);
+
+    

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 /*session is started if you don't write this line can't use $_Session  global variable*/
@@ -26,14 +25,34 @@ get_header();
                         <div class="row  justify-content-center">
                             <div class="row">
                                 <div class="col-sm-8 pt-4 mt-4" style=" background: #fff;  min-width:50%;">
-                                    <img ng-src="{{post.photo[0]}}"
-                                        class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
-                                        alt="..." style="whidth: 100%;">
-                                    <h6 class="text-dark font-weight-bold  text-left " ng-bind="post.title"></h6>
+                                    <div ng-if="!pesquisa">
+                                        <img ng-src="{{post.photo[0]}}"
+                                            class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
+                                            alt="..." style="whidth: 100%;">
+                                        <h6 class="text-dark font-weight-bold  text-left " ng-bind="post.title"></h6>
 
-                                    <h5 class="text-color text-justify font-weight-normal "
-                                        ng-bind-html="post.post_content"></h5>
+                                        <h5 class="text-color text-justify font-weight-normal "
+                                            ng-bind-html="post.post_content"></h5>
 
+                                    </div>
+                                    <div ng-if="pesquisa">
+                                        <h4 class="text-dark text-left pb-4">Pesquisando Sobre| 
+                                        <span class="text-color text-left pb-4" ng-bind="pesquisa"></span></h4>
+                                        <div ng-repeat="listaPosts in listaPosts | filter:customFilter | limitTo:6 ">
+                                            <a href="{{listaPosts.link}}">
+                                                <img ng-src="{{listaPosts.photo[0]}}"
+                                                    class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
+                                                    alt="..." style="whidth: 100%;">
+                                                <h6 class="text-dark font-weight-bold  text-left "
+                                                    ng-bind="listaPosts.title"></h6>
+                                                <h5 class="text-color text-justify font-weight-normal pb-4"
+                                                    ng-bind-html="listaPosts.post_excerpt"></h5>
+
+                                                <hr class="pt-4 mt-4 pb-4">
+                                            </a>
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
@@ -74,8 +93,8 @@ get_header();
                                     <div class="card border-0 rounded-0 pt-4 mt-4" style="max-width: 100%;">
                                         <div class="card-header border-0 rounded-0">
 
-                                            <h5 class="text-left text-dark">Matérias  <span class="text-color">| confira
-                                             nossa ultima matéria</span></h5>
+                                            <h5 class="text-left text-dark">Matérias <span class="text-color">| confira
+                                                    nossa ultima matéria</span></h5>
                                             <a href="{{ultimaMateria.link}}">
                                                 <img ng-src="{{ultimaMateria.photo[0]}}"
                                                     class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
@@ -89,8 +108,8 @@ get_header();
                                     </div>
 
                                     <div class="card border-0 rounded-0 pt-4 mt-4" style="max-width: 100%;">
-                                        <h5 class="text-left text-dark">Equipe  <span class="text-color">
-                                        | conheça nossa equipe</span></h5>
+                                        <h5 class="text-left text-dark">Equipe <span class="text-color">
+                                                | conheça nossa equipe</span></h5>
                                         <a class="border-0 pr-0" href="{{membroEquipe.link}}">
                                             <img ng-src="{{membroEquipe.photo[0]}}"
                                                 class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"

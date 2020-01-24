@@ -10080,8 +10080,18 @@ Version: 1.0
   margin: 0 auto;
 }
 
-#menu-menu-principal{
- 
-    
-    
-}
+input[type="contato"]::-webkit-input-placeholder {
+  color: #000 !important;
+  }
+   
+  input[type="contato"]:-moz-placeholder { /* Firefox 18- */
+  color: #000  !important;  
+  }
+   
+  input[type="contato"]::-moz-placeholder {  /* Firefox 19+ */
+  color: #000  !important;  
+  }
+   
+  input[type="contato"]:-ms-input-placeholder {  
+  color: #000  !important;  
+  }
