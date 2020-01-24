@@ -10095,3 +10095,8 @@ input[type="contato"]::-webkit-input-placeholder {
   input[type="contato"]:-ms-input-placeholder {  
   color: #000  !important;  
   }
+
+  .slider{
+    height: 400px;
+    min-width: 100% !important;
+  }

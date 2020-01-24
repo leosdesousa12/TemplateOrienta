@@ -22,7 +22,28 @@ $decoded = json_decode($videoList, true);
     <header class="text-white text-center pt-4 mt-4">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
+                <?php query_posts('post_type=slider&post_per_page=-1'); ?>
+                <?php $quant = 0; if(have_posts()): while(have_posts()): the_post();  $quant++?>
+
+                <?php if($quant == 1 ):  ?>
                 <div class="carousel-item active">
+                    <img class="slider" url="<?php echo the_post_thumbnail(  'full', array( 'class' => 'slider' ) ); ?>"
+                        alt="...">
+                </div>
+                <?php else: ?>
+                <div class="carousel-item">
+                    <img class="slider" url="<?php echo the_post_thumbnail(  'full', array( 'class' => 'slider' ) ); ?>"
+                        alt="...">
+                </div>
+                <?php endif ?>
+
+                <?php endwhile; ?>
+
+
+                <?php else: ?>
+                <?php endif ?>
+                <?php wp_reset_query();?>
+                <!--<div class="carousel-item active">
                     <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/1722.jpg" class="d-block w-100"
                         alt="...">
                 </div>
@@ -33,9 +54,9 @@ $decoded = json_decode($videoList, true);
                 <div class="carousel-item">
                     <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/1722.jpg" class="d-block w-100"
                         alt="...">
-                </div>
+                </div>-->
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
@@ -185,8 +206,9 @@ $decoded = json_decode($videoList, true);
                 <div class="card border-0 rounded-0 pt-2 mt-2" style="max-width: 550px; ">
                     <a href="{{materia.link}}" class="pr-1">
                         <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/<?php echo $items['id']['videoId'];  ?>?rel=0" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item"
+                                src="https://www.youtube.com/embed/<?php echo $items['id']['videoId'];  ?>?rel=0"
+                                allowfullscreen></iframe>
                         </div>
                         <h6 class="text-left text-dark ml-2"><?php echo $items['snippet']['title']; ?></h6>
                         <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1">

@@ -44,6 +44,26 @@ function meus_posts_types(){
 add_action('init',meus_posts_types);
 
 //criando posts types
+function slyder_posts_types(){
+  //equipe
+  register_post_type( 'slider', 
+      array(
+          'labels' => array(
+              'name' => __('Slider'),
+              'singular_name' => __('Slider')
+          ),
+      'public'         => true,
+      'rewrite' => array('slug' => 'Slider'), // <--- definimos o slug aqui...
+      'has_archive'    => true,
+      'menu_icon'      => 'dashicons-images-alt',
+      'supports'        => array('title','editor','thumbnail','page-attributes'),
+      )
+      );
+
+}
+add_action('init',slyder_posts_types);
+
+//criando posts types
 /*
 function meus_posts_types_Propostas(){
     //equipe
@@ -744,5 +764,48 @@ function getMembroEquipe()
 }
 add_action( "wp_ajax_nopriv_getMembroEquipe", "getMembroEquipe");
 add_action( "wp_ajax_getMembroEquipe","getMembroEquipe");
+
+
+
+function getSlider()
+{
+    header("Content-Type: application/json");
+   /* $posts_array = get_posts();
+    echo json_encode( $posts_array );*/
+    $args = array(
+        'post_type' => 'slider',
+        
+      );
+
+
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+        
+        $thumb_id = (int)get_post_thumbnail_id($p->ID);
+      //  $aTemp->post_id = $p->ID;
+      //  $aTemp->author = $p->post_author;
+     //   $aTemp->post_content = apply_filters('the_content', $p->post_content);
+    //    $aTemp->post_excerpt = $p->post_excerpt;
+      //  $aTemp->post_category = get_the_category( $p->ID );
+      //  $aTemp->imgCategory = get_wp_term_image(3);
+      //  $aTemp->title = $p->post_title;
+       // $aTemp->link = $p->guid;
+       // $aTemp->link = get_permalink($p);
+       // $aTemp->comment_count = $p->comment_count;	
+        $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
+        $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
+
+        $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
+        $oReturn->posts[] = $aTemp;
+    
+      }
+      echo json_encode( $oReturn );
+
+    die();
+}
+add_action( "wp_ajax_nopriv_getProfissao", "getProfissao");
+add_action( "wp_ajax_getProfissao","getProfissao");
 
 ?>
