@@ -56,7 +56,7 @@ $decoded = json_decode($videoList, true);
                         alt="...">
                 </div>-->
             </div>
-             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
@@ -77,18 +77,19 @@ $decoded = json_decode($videoList, true);
                 <div class="row justify-content-md-center">
                     <?php query_posts('post_type=equipe&post_per_page=-1'); ?>
                     <?php if(have_posts()): while(have_posts()): the_post(); ?>
-
-                    <div class="col-md-auto  p-0 border-0 rounded-0">
-                        <div class="card text-white font-weight-bold  p-0 border-0 rounded-0" style="width: 23rem;">
-                            <img class="card-img  p-0 border-0 rounded-0 " style="height: 355px;"
-                                url="<?php  the_post_thumbnail(); ?>" alt="Card image cap">
-                            <div class="card-img-overlay d-flex flex-column capa">
-                                <div class="text-center mt-auto ">
-                                    <h4><?php echo the_title();?></h4>
+                    <a class="p-0 border-0 rounded-0" href="<?php echo get_permalink( get_page_by_title( 'EQUIPE' ) );?>">
+                        <div class="col-md-auto  p-0 border-0 rounded-0">
+                            <div class="card text-white font-weight-bold  p-0 border-0 rounded-0" style="width: 23rem;">
+                                <img class="card-img  p-0 border-0 rounded-0 " style="height: 355px;"
+                                    url="<?php  the_post_thumbnail(); ?>" alt="Card image cap">
+                                <div class="card-img-overlay d-flex flex-column capa">
+                                    <div class="text-center mt-auto ">
+                                        <h4><?php echo the_title();?></h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                     <?php endwhile; ?>
 
@@ -109,25 +110,9 @@ $decoded = json_decode($videoList, true);
                 <div class="col-md-12 text-center">
                     <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
                         <div class="carousel-inner w-100" role="listbox">
-                            <!--<div class="carousel-item active">
-                                <div class="col-lg-4 col-md-6">
-                                    <img class="img-fluid" src="http://placehold.it/350x180?text=1">
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-lg-4 col-md-6">
-                                    <img class="img-fluid" src="http://placehold.it/350x180?text=2">
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="col-lg-4 col-md-6">
-                                    <img class="img-fluid" src="http://placehold.it/350x180?text=3">
-                                </div>
-                            </div>-->
-
                             <div class="carousel-item " ng-class="{'active text-primary':(($index ) == 0)}"
                                 ng-repeat="post in posts">
-
+                                
                                 <div class="col-lg-4 col-md-6 border-0 mr-0 pr-0 ml-0 pl-0"
                                     ng-style="{'background': post.color}">
                                     <div class=" text-center" style="background: post.color;">

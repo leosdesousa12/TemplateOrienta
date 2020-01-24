@@ -31,9 +31,9 @@
 
   <!-- Navigation -->
   <nav class="navbar navbar-light text-dark custom navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container pl-5 ml-5 pr-2 mr-2 ">
+    <div class="container menu ">
       <a class="" href="<?php echo get_site_url(); ?>">
-      <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_normal.png" width="280" height="auto" alt=""></a>
+      <img class="text-center ml-0" src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_normal.png" width="280" height="auto" alt=""></a>
       <button class=" text-left ml-0 mt-2 navbar-toggler navbar-toggler-left text-uppercase  bg-secondary text-dark rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
@@ -74,7 +74,7 @@
             <i class="fa  fa-facebook  "style="color: #fff; "></i>
           </a>
 
-          <a class="btn btn-outline-light btn-social mx-1"style="background: #25bcbd;"   href="https://www.instagram.com/orientaescolhaprofissional/">
+          <a class="btn btn-outline-light btn-social mx-1 border-0"style="background: #25bcbd;"   href="https://www.instagram.com/orientaescolhaprofissional/">
             <i class="fa fa-instagram  "style="color: white;"></i>
           </a>
         </ul>
