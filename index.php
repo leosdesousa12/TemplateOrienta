@@ -1,10 +1,25 @@
+<?php
+
+$myApiKey="AIzaSyAp1m_ID-7dbt7zFOg05aFaKYdhvgUxNeY"; // Provide your API Key
+$myChannelID="UCqYQILMttKeviOz2G8mZKSA"; // Provide your Channel ID
+$maxResults="2"; // Number of results to display
+ 
+// Make an API call to store list of videos to JSON variable
+$myQuery = "https://www.googleapis.com/youtube/v3/search?key=$myApiKey&channelId=$myChannelID&part=snippet,id&order=date&maxResults=$maxResults";
+$videoList = file_get_contents($myQuery);
+ 
+// Convert JSON to PHP Array
+$decoded = json_decode($videoList, true);
+ 
+?>
+
 <div ng-controller="mainCtrl">
     <?php get_header();
 
 ?>
 
     <!-- Masthead -->
-    <header class="text-white text-center pt-5 mt-5">
+    <header class="text-white text-center pt-4 mt-4">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -96,9 +111,9 @@
                                     ng-style="{'background': post.color}">
                                     <div class=" text-center" style="background: post.color;">
                                         <img class="card-img img-fluid img-thumbnail pt-4 mt-0 pt-0 mb-0 pb-0 border-0 rounded-0  "
-                                            style="width: 200px;" ng-src="{{post.image[0]}}" ng-style="{'background': post.color}" />
-                                        <div class="card-body "
-                                        ng-style="{'background': post.color}">
+                                            style="width: 200px;" ng-src="{{post.image[0]}}"
+                                            ng-style="{'background': post.color}" />
+                                        <div class="card-body " ng-style="{'background': post.color}">
                                             <h5 class="card-text text-center text-white" ng-bind="post.title">
                                             </h5>
                                         </div>
@@ -139,7 +154,8 @@
                             class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                             alt="..." style="width: 723px; height:300px ">
                         <h5 class="text-left text-dark ml-2" ng-bind="materia.title"></h5>
-                        <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1" ng-bind-html="materia.post_excerpt">
+                        <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1"
+                            ng-bind-html="materia.post_excerpt">
                         </h6>
                     </a>
 
@@ -155,6 +171,35 @@
         </div>
     </div>
 
+
+    <div class="container text-center mt-3 pt-3 ">
+        <!-- Portfolio Section Heading -->
+        <h1 class="text-center font-weight-normal text-primary mt-3 pt-3  pb-2">VÍDEOS EM DESTAQUE</h1>
+        <div class="container">
+            <div class="row  justify-content-center">
+                <?php
+              // Run a loop to display list of videos
+                foreach ($decoded['items'] as $items)
+                {?>
+
+                <div class="card border-0 rounded-0 pt-2 mt-2" style="max-width: 550px; ">
+                    <a href="{{materia.link}}" class="pr-1">
+                        <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item"
+                                    src="https://www.youtube.com/embed/<?php echo $items['id']['videoId'];  ?>?rel=0" allowfullscreen></iframe>
+                        </div>
+                        <h6 class="text-left text-dark ml-2"><?php echo $items['snippet']['title']; ?></h6>
+                        <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1">
+                            <?php echo $items['snippet']['description']; ?></h6>
+                    </a>
+                </div>
+
+                <?php }
+
+                ?>
+            </div>
+        </div>
+    </div>
 
 
 

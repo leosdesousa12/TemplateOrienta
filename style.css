@@ -10067,3 +10067,21 @@ Version: 1.0
 .carousel-inner .carousel-item-left {
   transform: translateX(0);
 }
+
+
+.navbar.custom {
+  width: 100%;  
+  margin: 0 auto;
+}
+
+
+.custom {
+  width: 100% !important;
+  margin: 0 auto;
+}
+
+#menu-menu-principal{
+ 
+    
+    
+}

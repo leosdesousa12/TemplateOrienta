@@ -9,9 +9,9 @@
                 <h1 class="text-center text-primary mb-2 mt-4" ng-bind="titleProfissao"></h1>
 
                 <div class="row  justify-content-md-center">
-                    <div ng-if="visivel" class="col-sm-11 pt-2 pb-4  text-center">
+                    <div ng-if="visivel" class="col-sm-11 pt-4 pb-4  text-center">
                         <div class="col-md-auto   text-center mr-0 ml-0 ">
-                            <h1 class="text-center  text-primary pb-3 ml-6 pl-6">NOTÍCIAS</h1>
+                            <h1 class="text-center font-weight-normal text-primary pb-3 ml-6 pl-6">NOTÍCIAS</h1>
 
                             <div class="row  justify-content-center">
                                 <div class="row">

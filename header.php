@@ -30,8 +30,8 @@
 
 
   <!-- Navigation -->
-  <nav class="navbar navbar-light text-dark  navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container pl-3 ml-5 pr-0 mr-0 ">
+  <nav class="navbar navbar-light text-dark custom navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container pl-5 ml-5 pr-2 mr-2 ">
       <a class="" href="<?php echo get_site_url(); ?>">
       <img src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_normal.png" width="280" height="auto" alt=""></a>
       <button class=" text-left ml-0 mt-2 navbar-toggler navbar-toggler-left text-uppercase  bg-secondary text-dark rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
         <i class="fa fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto mr-0 pr-0 ">
+        <ul class="navbar-nav ml-auto pt-2 mt-2 mr-0 pr-0 custom " style="width: 100% !important;">
           <!--<li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="equipe.php">EQUIPE</a>
           </li>
@@ -57,18 +57,28 @@
           </li>-->
           <?php wp_nav_menu(
               array('theme_location' => 'header-meu',
-                     'menu_class'     => 'font-weight-bold navbar-nav ml-auto nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger'
+                     'menu_class'     => 'font-weight-bold text-nowrap navbar-nav ml-auto nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger'
               )
           ); ?>
-         
-          <li class="nav-item mx-0 mx-lg-1">
-            <a href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/"  class=" fa fa-facebook color bg-info rounded-circle "  style="color: white;" ></a>
-          </li>
+
+         <!-- 
           <li class="nav-item mx-0 mx-lg-1 pr-2">
-            <a href="https://www.instagram.com/orientaescolhaprofissional/"  class=" btn btn-outline-light btn-social mx-1 border-0 nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger js-scroll-trigger fa fa-instagram color bg-info rounded-circle" style="color: white;" ></a>
+            <a href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/" class=" nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger js-scroll-trigger fa fa-facebook color bg-info rounded-circle" style="color: white;" ></a>
           </li>
-          
+
+          <li class="nav-item mx-0 mx-lg-1 pr-2">
+            <a href="https://www.instagram.com/orientaescolhaprofissional/"  class=" nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger js-scroll-trigger fa fa-instagram color bg-info rounded-circle" style="color: white;" ></a>
+          </li>-->
+
+          <a class="btn btn-outline-light btn-social mx-1 border-0 mb-2" style="background: #25bcbd;" href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/">
+            <i class="fa  fa-facebook  "style="color: #fff; "></i>
+          </a>
+
+          <a class="btn btn-outline-light btn-social mx-1"style="background: #25bcbd;"   href="https://www.instagram.com/orientaescolhaprofissional/">
+            <i class="fa fa-instagram  "style="color: white;"></i>
+          </a>
         </ul>
+        
       </div>
     </div>
   </nav>
