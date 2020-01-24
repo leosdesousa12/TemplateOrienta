@@ -1,4 +1,5 @@
 <?php /* Template name: proposta */?>
+
 <?php get_header(); ?>
 
 <!-- Contact Section -->
@@ -15,15 +16,15 @@
                 <div class="card mb-4  mt-4 pt-4 mb-0 pb-0 border-0 rounded-0 "
                     style="max-width: 100%; margin-bottom:0px !important;">
                     <div class="row no-gutters  mt-0 pt-0 mb-0 pb-0 border-0 rounded-0 ">
-                        <div class="col-md-4 text-center" style="background: #25bcbd;">
+                        <div class="col-md-4 text-center" style="background: #6ebbbc;">
                             <img class="card-img img-fluid img-thumbnail pt-4 mt-0 pt-0 mb-0 pb-0 border-0 rounded-0  "
-                                style="width: 200px; background: #25bcbd;" ng-src="{{postPrincipal.image[0]}}" />
+                                style="width: 200px; background: #6ebbbc;" ng-src="{{postPrincipal.image[0]}}" />
                             <div class="card-body "
-                                style=" background: <?php /*the_field('get_cor')*/ echo "#25bcbd;"; ?>">
+                                style=" background: <?php /*the_field('get_cor')*/ echo "#6ebbbc;"; ?>">
                                 <h5 class="card-text text-center text-white" ng-bind="postPrincipal.title"></h5>
                             </div>
                         </div>
-                        <div class="col-md-8 " style=" background: <?php /*the_field('get_cor')*/ echo "#eceeed;"; ?>">
+                        <div class="col-md-8  bd-cinza">
                             <div class="card-body text-white h-100 card-proposta">
                                 <h5 class="card-text text-justify text-color font-weight-normal  "
                                     ng-bind="postPrincipal.post_excerpt"></h5>

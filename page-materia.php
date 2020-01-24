@@ -11,7 +11,7 @@
                 <div class="row  justify-content-md-center">
                     <div ng-if="visivel" class="col-sm-11 pt-4 pb-4  text-center">
                         <div class="col-md-auto   text-center mr-0 ml-0 ">
-                            <h1 class="text-center font-weight-normal text-primary pb-3 ml-6 pl-6">NOTÍCIAS</h1>
+                            <h1 class="text-center font-weight-normal text-primary pb-3 ">MATÉRIAS</h1>
 
                             <div class="row  justify-content-center">
                                 <div class="row">
@@ -111,10 +111,10 @@
 
                                     <div class="col-sm-4 pl-4 text-left pt-4 mt-3">
                                         <div class="card border-0 rounded-0" style="max-width: 100%;">
-                                            <div class="card-header border-0 rounded-0">
+                                            <div class="card-header border-0 rounded-0 bd-cinza">
 
-                                                <h5 class="text-left text-dark">Categorias</h5>
-                                                <div class="text-left " ng-repeat="category in categorys | limitTo: 4">
+                                                <h5 class="text-left text-cinza">Categorias</h5>
+                                                <div class="text-left bd-cinza " ng-repeat="category in categorys | limitTo: 4">
                                                     <p class="text-left text-color text-normal">-
                                                         {{category.post_category.name}}</p>
                                                 </div>

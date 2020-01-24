@@ -18,26 +18,24 @@ get_header();
                         <div class="row  justify-content-center">
                             <div class="row">
                                 <div class="col-sm-8 pt-4 mt-4" style=" background: #fff;  min-width:60%;">
-                                    <h6 class="text-dark text-left font-weight-normal">Para entrar em contato conosco,
+                                    <h6 class="text-cinza text-left font-weight-normal">Para entrar em contato conosco,
                                         preencha os
                                         dados abaixo que iremos retornar </h6>
                                     <div class="row mt-4 pt-4">
                                         <div class="col-sm-6 " style=" background: #fff;">
                                             <form>
                                                 <div class="form-group ">
-                                                    <h6 class="text-dark text-left font-weight-normal">Nome</h6> <input
-                                                        type="email" class="  form-control border-0 "
-                                                        id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                        style="background: #eceeed;">
+                                                    <h6 class="text-cinza text-left font-weight-normal">Nome</h6> <input
+                                                        type="email" class="  form-control border-0 bd-cinza"
+                                                        id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                 </div>
 
                                                 <div class="form-group ">
-                                                    <h6 class="text-dark text-left font-weight-normal pt-3">Telefone
+                                                    <h6 class="text-cinza text-left font-weight-normal pt-3">Telefone
                                                     </h6>
-                                                    <input type="email" class="  form-control border-0"
-                                                        id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                        style="background: #eceeed;">
+                                                    <input type="email" class="  form-control border-0 bd-cinza"
+                                                        id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                 </div>
 
@@ -46,18 +44,16 @@ get_header();
                                         <div class="col-sm-6" style=" background: #fff;">
                                             <form>
                                                 <div class="form-group ">
-                                                    <h6 class="text-dark text-left font-weight-normal ">E-mail</h6>
-                                                    <input type="email" class="  form-control border-0 "
-                                                        id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                        style="background: #eceeed;">
+                                                    <h6 class="text-cinza text-left font-weight-normal ">E-mail</h6>
+                                                    <input type="email" class="  form-control border-0 bd-cinza"
+                                                        id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                 </div>
 
                                                 <div class="form-group ">
-                                                    <h6 class="text-dark text-left font-weight-normal pt-3">Assunto</h6>
-                                                    <input type="email" class="  form-control border-0"
-                                                        id="exampleInputEmail1" aria-describedby="emailHelp"
-                                                        style="background: #eceeed;">
+                                                    <h6 class="text-cinza text-left font-weight-normal pt-3">Assunto</h6>
+                                                    <input type="email" class="  form-control border-0 bd-cinza"
+                                                        id="exampleInputEmail1" aria-describedby="emailHelp">
 
                                                 </div>
 
@@ -67,23 +63,23 @@ get_header();
                                     </div>
                                     <form>
                                         <div class="form-group">
-                                            <h6 class="text-dark text-left font-weight-normal pt-3">Mensagem</h6>
-                                            <textarea class="form-control border-0" id="exampleFormControlTextarea1"
-                                                rows="3" style="background: #eceeed; min-height:200px; resize: none;"></textarea>
+                                            <h6 class="text-cinza text-left font-weight-normal pt-3">Mensagem</h6>
+                                            <textarea class="form-control border-0 bd-cinza" id="exampleFormControlTextarea1"
+                                                rows="3" style=" min-height:200px; resize: none;"></textarea>
                                         </div>
                                     </form>
                                     <div class="row">
                                         <div class="col-sm-5">
-                                            <h6 class="text-dark font-weight-normal text-left">Verificacao de segurança
+                                            <h6 class="text-cinza font-weight-normal text-left">Verificacao de segurança
                                             </h6>
-                                            <h6 class="text-dark font-weight-bold text-left">Qual o resultado da
+                                            <h6 class="text-cinza font-weight-bold text-left">Qual o resultado da
                                                 operação</h6>
 
                                         </div>
                                         <div class="col-sm-2">
-                                            <div class="form-group text-dark">
-                                                <input type="contato" class="form-control text-dark border-0 text-center contato" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" ng-model="result" placeholder="{{a +' + '+b}}" style="background: #eceeed;  color: #000000 !important; ">
+                                            <div class="form-group text-cinza">
+                                                <input type="contato" class="form-control text-cinza border-0 text-center contato bd-cinza" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" ng-model="result" placeholder="{{a +' + '+b}}" style=" color: #000000 !important; ">
                                             </div>
                                         </div>
                                         <div class="col-sm-5 text-right">
@@ -95,7 +91,7 @@ get_header();
                                 </div>
                                 <div class="col-sm-4 pl-4 text-left pt-4 mt-4">
                                     <div class="card border-0 rounded-0 " style="max-width: 100%;">
-                                        <h5 class="text-left text-dark">Equipe <span class="text-color">
+                                        <h5 class="text-left text-cinza">Equipe <span class="text-color  font-weight-normal">
                                                 | Conheça nossa equipe</span></h5>
                                         <a class="border-0 pr-0" href="{{membroEquipe.link}}">
                                             <img ng-src="{{membroEquipe.photo[0]}}"

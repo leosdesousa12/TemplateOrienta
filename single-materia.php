@@ -42,7 +42,7 @@ get_header();
 
                                 <div class="col-sm-4 pl-4 text-left pt-4 mt-4">
                                     <div class="card border-0 rounded-0" style="max-width: 100%;">
-                                        <div class="card-header border-0 rounded-0">
+                                        <div class="card-header border-0 rounded-0 bd-cinza">
 
                                             <h5 class="text-left text-dark">Categorias</h5>
                                             <div class="text-left " ng-repeat="category in categorys | limitTo: 4">

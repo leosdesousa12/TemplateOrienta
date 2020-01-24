@@ -17,9 +17,7 @@
   <!-- Custom fonts for this theme 
   <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />-->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <!--<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->S
   <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
-  <!-- Theme CSS -->
 
   
   <?php wp_head(); ?>
@@ -31,7 +29,7 @@
 
 
   <!-- Navigation -->
-  <nav class="navbar navbar-light text-dark custom navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  <nav class="navbar custom navbar-light text-dark  navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container menu ">
       <a class="" href="<?php echo get_site_url(); ?>">
       <img class="text-center ml-0" src="<?php echo  get_stylesheet_directory_uri();?>/assets/img/logo_normal.png" width="280" height="auto" alt=""></a>
@@ -40,7 +38,7 @@
         <i class="fa fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto pt-2 mt-2 mr-0 pr-0 custom " style="width: 100% !important;">
+        <ul class="navbar-nav ml-auto  mr-0 pr-0 custom " style="width: 100% !important;">
           <!--<li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger" href="equipe.php">EQUIPE</a>
           </li>
@@ -71,11 +69,11 @@
             <a href="https://www.instagram.com/orientaescolhaprofissional/"  class=" nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger js-scroll-trigger fa fa-instagram color bg-info rounded-circle" style="color: white;" ></a>
           </li>-->
 
-          <a class="btn btn-outline-light btn-social mx-1 border-0 mb-2" style="background: #25bcbd;" href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/">
+          <a class="btn btn-outline-light btn-social mt-1 menu-principal mx-1 border-0 mb-2"  href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/">
             <i class="fa  fa-facebook  "style="color: #fff; "></i>
           </a>
 
-          <a class="btn btn-outline-light btn-social mx-1 border-0"style="background: #25bcbd;"   href="https://www.instagram.com/orientaescolhaprofissional/">
+          <a class="btn btn-outline-light btn-social menu-principal mx-1 border-0 mt-1 "  href="https://www.instagram.com/orientaescolhaprofissional/">
             <i class="fa fa-instagram  "style="color: white;"></i>
           </a>
         </ul>

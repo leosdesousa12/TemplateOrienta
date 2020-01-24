@@ -185,7 +185,7 @@ Version: 1.0
   }
 
   a:hover {
-    color: #117964;
+    color: #6ebbbc;
     text-decoration: none;
   }
   
@@ -496,7 +496,7 @@ Version: 1.0
   .blockquote-footer {
     display: block;
     font-size: 80%;
-    color: #25bcbd;
+    color: #6ebbbc;
   }
   
   .blockquote-footer::before {
@@ -4649,8 +4649,8 @@ Version: 1.0
   .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: #1abc9c;
-    border-color: #1abc9c;
+    background-color: #6ebbbc;
+    border-color: #6ebbbc;
   }
   
   .page-item.disabled .page-link {
@@ -9384,7 +9384,7 @@ Version: 1.0
   }
   
   .text-primary {
-    color: #004868 !important;
+    color: #6ebbbc !important;
   }
   
   a.text-primary:hover, a.text-primary:focus {
@@ -9864,7 +9864,7 @@ Version: 1.0
   .footer {
     padding-top: 5rem;
     padding-bottom: 5rem;
-    background-color: #25bcbd;
+    background-color: #6ebbbc;
     color: #fff;
     position: static !important;
     bottom:0;
@@ -9923,7 +9923,7 @@ Version: 1.0
 
 
   .text-color{
-    color: #6d6d6c !important;
+    color: #373737 !important;
   }
 
 
@@ -10069,8 +10069,10 @@ Version: 1.0
 
 
 .navbar.custom {
+  height: 90px;
   width: 100%;  
   margin: 0 auto;
+  background: #ecedec !important;
 }
 
 
@@ -10098,4 +10100,32 @@ input[type="contato"]::-webkit-input-placeholder {
   .slider{
     height: 400px;
     min-width: 100% !important;
+  }
+
+  .btn-social {
+    width: 25px;
+    height: 25px;
+    font-size: 13px;
+  }
+
+
+  .btn-social.menu-principal {
+    background: #0088ab !important;
+  }
+
+
+  .btn-social.btn-footer {
+    height: 29px;
+  }
+
+  .bd-cinza{
+    background: #ecedec;
+  }
+
+
+.text-cinza-claro{
+  color: #ecedec;
+}
+  .text-cinza{
+    color: #373737;
   }

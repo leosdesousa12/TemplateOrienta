@@ -16,7 +16,7 @@
                                     style="max-width: 100px;  background: #eceeed;">
                                     <img ng-src="{{category.img}}" class="card-img-top" alt="...">
                                 </div>
-                                <div class="card-body text-center ml-4 " style="max-width: 150px;">
+                                <div class="card-body text-center ml-4 " style="max-width: 160px;">
                                     <p class="card-text text-center text-dark mr-0 ml-0"
                                         ng-bind="category.post_category.name"></p>
                                 </div>
@@ -33,8 +33,8 @@
                                     <input type="text" ng-model="pesquisa" ng-change="filter(pesquisa)"
                                         class="form-control text-center text-white border-0 rounded-0"
                                         id="inlineFormInputGroup" placeholder="PESQUISAR PROFISSÕES..."
-                                        style="background: #25bcbd; min-width:230px;">
-                                    <div class="input-group-prepend mb-7" style="background: #25bcbd; ">
+                                        style="background: #6ebbbc; min-width:230px;">
+                                    <div class="input-group-prepend mb-7" style="background: #6ebbbc; ">
                                         <div class="input-group-text text-white border-0 " style="background: #399ea0;">
                                             ></div>
                                     </div>
@@ -70,12 +70,12 @@
                             </div>
                             <nav aria-label="...">
 
-                                <ul class="pagination pagination-lg rounded-0" style="color: #25bcbd;">
+                                <ul class="pagination pagination-lg rounded-0" style="color: #6ebbbc;">
 
                                     <li class="page-item disabled rounded-0">
                                     <li ng-if="(pageAtual) >0" ng-click="loadListPagination(pageAtual-1)"
                                         class="page-item rounded-0"><a
-                                            class="page-link rounded-0 ml-2 mr-2 border-2 border border-page"  style="color: #25bcbd;">
+                                            class="page-link rounded-0 ml-2 mr-2 border-2 border border-page"  style="color: #6ebbbc;">
                                             < </a>
                                     </li>
 
@@ -92,19 +92,19 @@
 
                                     <li class=" active page-item rounded-0" ng-if="(pageAtual + 1) > 3 ">
                                         <a ng-bind="pageAtual + 1"
-                                            class=" page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #25bcbd;">
+                                            class=" page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #6ebbbc;">
 
                                         </a>
                                     </li>
                                     <li class="page-item rounded-0"
                                         ng-if="(pageAtual + 1) <= 3 && (pageAtual + 1) > 1 &&(pagina.length ) > 3 ">
-                                        <a class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #25bcbd;" >
+                                        <a class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #6ebbbc;" >
                                             ...
                                         </a>
                                     </li>
                                     <li ng-click="loadListPagination(pagina.length-1 )" class="page-item rounded-0"
                                         ng-if="(pagina.length ) > 3 && (pageAtual+1) <pagina.length">
-                                        <a class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #25bcbd;"
+                                        <a class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #6ebbbc;"
                                             ng-bind="pagina.length">
 
                                         </a>
@@ -112,7 +112,7 @@
 
                                     <li ng-if="(pageAtual +1) <pagina.length "
                                         ng-click="loadListPagination(pageAtual+1)" class="text-page-item rounded-0"><a
-                                            class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #25bcbd;"
+                                            class="page-link rounded-0 ml-2 mr-2 border-2 border border-page" style="color: #6ebbbc;"
                                            >></a></li>
 
                                     </li>

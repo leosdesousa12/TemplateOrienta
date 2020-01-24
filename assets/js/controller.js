@@ -4,7 +4,16 @@ app.controller('HomeCtrl',['$scope','Posts', function($scope, Posts){
 
     Posts.getPosts().then(function(data){
         $scope.posts =data.posts;
-        $scope.postPrincipal = $scope.posts[0];
+
+        if(!($scope.posts[0].idPrincipal)){
+            $scope.postPrincipal = $scope.posts[0];
+        }else{
+            $scope.posts.forEach(element => {
+                if(element.post_id == element.idPrincipal){
+                    $scope.postPrincipal = element;
+                }
+            });
+        }
     });
 
     $scope.principal = function(data){

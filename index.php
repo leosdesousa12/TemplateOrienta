@@ -1,6 +1,6 @@
 <?php
 
-$myApiKey="AIzaSyAp1m_ID-7dbt7zFOg05aFaKYdhvgUxNeY"; // Provide your API Key
+$myApiKey="AIzaSyDsc44gXWL0oUo3nV5xoxi66Na7Z6h3Hfg"; // Provide your API Key
 $myChannelID="UCqYQILMttKeviOz2G8mZKSA"; // Provide your Channel ID
 $maxResults="2"; // Number of results to display
  
@@ -72,12 +72,13 @@ $decoded = json_decode($videoList, true);
         <div class="container">
 
             <!-- Portfolio Section Heading -->
-            <h1 class="text-center font-weight-normal text-primary pb-1">EQUIPE</h1>
+            <h1 class="text-center font-weight-normal text-primary ">EQUIPE</h1>
             <div class="container">
                 <div class="row justify-content-md-center">
                     <?php query_posts('post_type=equipe&post_per_page=-1'); ?>
                     <?php if(have_posts()): while(have_posts()): the_post(); ?>
-                    <a class="p-0 border-0 rounded-0" href="<?php echo get_permalink( get_page_by_title( 'EQUIPE' ) );?>">
+                    <a class="p-0 border-0 rounded-0"
+                        href="<?php echo get_permalink( get_page_by_title( 'EQUIPE' ) );?>">
                         <div class="col-md-auto  p-0 border-0 rounded-0">
                             <div class="card text-white font-weight-bold  p-0 border-0 rounded-0" style="width: 23rem;">
                                 <img class="card-img  p-0 border-0 rounded-0 " style="height: 355px;"
@@ -95,7 +96,6 @@ $decoded = json_decode($videoList, true);
 
 
                     <?php else: ?>
-                    Equipe não cadastrada
                     <?php endif ?>
                     <?php wp_reset_query();?>
                 </div>
@@ -116,12 +116,15 @@ $decoded = json_decode($videoList, true);
                                 <div class="col-lg-4 col-md-6 border-0 mr-0 pr-0 ml-0 pl-0"
                                     ng-style="{'background': post.color}">
                                     <div class=" text-center" style="background: post.color;">
-                                        <img class="card-img img-fluid img-thumbnail pt-4 mt-0 pt-0 mb-0 pb-0 border-0 rounded-0  "
-                                            style="width: 200px;" ng-src="{{post.image[0]}}"
-                                            ng-style="{'background': post.color}" />
+                                        <a class="pr-0 pl-0 ml-0 mr-0" ng-href="{{post.link}}">
+
+                                            <img class="card-img img-fluid img-thumbnail pt-4 mt-0 pt-0 mb-0 pb-0 border-0 rounded-0  "
+                                                style="width: 200px;" ng-src="{{post.image[0]}}"
+                                                ng-style="{'background': post.color}" />
+                                        </a>
                                         <div class="card-body " ng-style="{'background': post.color}">
-                                            <h5 class="card-text text-center text-white" ng-bind="post.title">
-                                            </h5>
+                                            <h4 class="card-text text-center text-white" ng-bind="post.title">
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
@@ -130,14 +133,16 @@ $decoded = json_decode($videoList, true);
                         </div>
 
 
-                        <a class="carousel-control-prev bg-dark w-auto" href="#myCarousel" role="button"
+                        <a class="carousel-control-prev bg-dark w-auto pr-0" href="#myCarousel" role="button"
                             data-slide="prev">
-                            <span class="carousel-control-prev-icon text-center ml-3 pl-3" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
+                            <span class="carousel-control-prev-icon text-center ml-2 pl-2 pr-2 mr-2 "
+                                aria-hidden="true"></span>
+                            <span class="sr-only ">Previous</span>
                         </a>
-                        <a class="carousel-control-next bg-dark w-auto" href="#myCarousel" role="button"
+                        <a class="carousel-control-next bg-dark w-auto pr-0" href="#myCarousel" role="button"
                             data-slide="next">
-                            <span class="carousel-control-next-icon text-center ml-3 pl-3" aria-hidden="true"></span>
+                            <span class="carousel-control-next-icon text-center ml-2 pl-2 pr-2 mr-2 "
+                                aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
@@ -150,19 +155,19 @@ $decoded = json_decode($videoList, true);
     <div class="container text-center mt-3 pt-3 ">
 
         <!-- Portfolio Section Heading -->
-        <h1 class="text-center font-weight-normal text-primary mt-3 pt-3  pb-2">MATÉRIAS</h1>
+        <h1 class="text-center font-weight-normal text-primary mt-3 pt-3 ">MATÉRIAS</h1>
         <div class="container">
             <div class="row  justify-content-center">
-                <div class="card border-0 rounded-0 pt-2 mt-2" style="max-width: 550px; "
+                <div class="card border-0 rounded-0 pt-0 mt-0" style="max-width: 550px; "
                     ng-repeat="materia in materias | limitTo: 4">
                     <a href="{{materia.link}}" class="pr-1">
                         <img ng-src="{{materia.photo[0]}}"
                             class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                             alt="..." style="width: 723px; height:300px ">
-                        <h5 class="text-left text-dark ml-2" ng-bind="materia.title"></h5>
-                        <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1"
+                        <h3 class="text-left text-cinza ml-2 mb-0 pt-4" ng-bind="materia.title"></h3>
+                        <h4 class="text-color text-justify font-weight-normal mt-0 pt-0  ml-2 pb-1"
                             ng-bind-html="materia.post_excerpt">
-                        </h6>
+                        </h4>
                     </a>
 
                 </div>
@@ -195,7 +200,7 @@ $decoded = json_decode($videoList, true);
                                 src="https://www.youtube.com/embed/<?php echo $items['id']['videoId'];  ?>?rel=0"
                                 allowfullscreen></iframe>
                         </div>
-                        <h6 class="text-left text-dark ml-2"><?php echo $items['snippet']['title']; ?></h6>
+                        <h6 class="text-left text-cinza ml-2"><?php echo $items['snippet']['title']; ?></h6>
                         <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1">
                             <?php echo $items['snippet']['description']; ?></h6>
                     </a>

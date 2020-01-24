@@ -271,6 +271,8 @@ add_action( 'template_redirect', 'enable_ajax_functionality');
 
 function test_ajax()
 {
+  session_start();
+
     header("Content-Type: application/json");
    /* $posts_array = get_posts();
     echo json_encode( $posts_array );*/
@@ -293,7 +295,8 @@ function test_ajax()
         $aTemp->post_excerpt = $p->post_excerpt;
         $aTemp->title = $p->post_title;
         $aTemp->color = get_field('color-proposta', $p->ID);
-
+        $aTemp->link = get_permalink($p);
+        $aTemp->idPrincipal = $_SESSION["idProposta"];
      //   $aTemp->comment_count = $p->comment_count;	
         $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
         $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
@@ -302,6 +305,8 @@ function test_ajax()
         $oReturn->posts[] = $aTemp;
     
       }
+      unset($_SESSION["idProposta"]);
+
       echo json_encode( $oReturn );
 
     die();

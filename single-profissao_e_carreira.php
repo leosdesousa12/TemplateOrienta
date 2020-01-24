@@ -60,7 +60,7 @@ get_header();
                                     <div class="card border-0 rounded-0" style="max-width: 100%;">
                                         <div class="card-header border-0 rounded-0">
 
-                                            <h5 class="text-left text-dark">Categorias</h5>
+                                            <h5 class="text-left text-cinza">Categorias</h5>
                                             <div class="text-left " ng-repeat="category in categorys | limitTo: 3">
                                                 <p class="text-left text-color text-normal">-
                                                     {{category.post_category.name}}</p>
@@ -77,10 +77,10 @@ get_header();
                                                             class="form-control text-center text-white border-0 rounded-0"
                                                             id="inlineFormInputGroup"
                                                             placeholder="PESQUISAR PROFISSÕES..."
-                                                            style="background: #25bcbd; min-width:20%;">
+                                                            style="background: #6ebbbc; min-width:20%;">
 
                                                         <div class="input-group-prepend float-right"
-                                                            style="background: #25bcbd; ">
+                                                            style="background: #6ebbbc; ">
                                                             <div class="input-group-text text-white border-0 "
                                                                 style="background: #399ea0;">
                                                                 ></div>
@@ -93,13 +93,13 @@ get_header();
                                     <div class="card border-0 rounded-0 pt-4 mt-4" style="max-width: 100%;">
                                         <div class="card-header border-0 rounded-0">
 
-                                            <h5 class="text-left text-dark">Matérias <span class="text-color">| confira
+                                            <h5 class="text-left text-cinza">Matérias <span class="text-color  font-weight-normal">| confira
                                                     nossa ultima matéria</span></h5>
                                             <a href="{{ultimaMateria.link}}">
                                                 <img ng-src="{{ultimaMateria.photo[0]}}"
                                                     class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                                                     alt="..." style="whidth: 100%;">
-                                                <h5 class="text-left text-dark" ng-bind="ultimaMateria.title"></h5>
+                                                <h5 class="text-left text-cinza" ng-bind="ultimaMateria.title"></h5>
                                                 <h6 class="text-color text-justify font-weight-normal pb-1"
                                                     ng-bind-html="ultimaMateria.post_excerpt"></h6>
                                             </a>
@@ -108,7 +108,7 @@ get_header();
                                     </div>
 
                                     <div class="card border-0 rounded-0 pt-4 mt-4" style="max-width: 100%;">
-                                        <h5 class="text-left text-dark">Equipe <span class="text-color">
+                                        <h5 class="text-left text-cinza">Equipe <span class="text-color  font-weight-normal">
                                                 | conheça nossa equipe</span></h5>
                                         <a class="border-0 pr-0" href="{{membroEquipe.link}}">
                                             <img ng-src="{{membroEquipe.photo[0]}}"
