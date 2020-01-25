@@ -69,7 +69,7 @@
             <a href="https://www.instagram.com/orientaescolhaprofissional/"  class=" nav-link py-2 px-0 px-lg-2 rounded js-scroll-trigger js-scroll-trigger fa fa-instagram color bg-info rounded-circle" style="color: white;" ></a>
           </li>-->
 
-          <a class="pt-1 mt-1 btn btn-outline-light btn-social mt-1 menu-principal mx-1 border-0 mb-2"  href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/">
+          <a class="pt-1 mt-1 btn btn-outline-light btn-social mt-1 menu-principal mx-1 border-0 mt-1"  href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/">
             <i class="fa  fa-facebook  "style="color: #fff; "></i>
           </a>
 

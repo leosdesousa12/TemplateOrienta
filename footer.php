@@ -12,10 +12,10 @@
           
           <div class="col-auto mx-auto  justify-content-md-center ">
           <a class=" ml-5 btn btn-outline-light btn-social btn-footer mx-1 bg-white" href="https://www.facebook.com/orientaescolhaprofissionaledecarreiras/">
-            <i class="fa  fa-facebook  "style="color: #25bcbd; background-color: white;"></i>
+            <i class="fa  fa-facebook  "style="color: #6ebbbc; background-color: white;"></i>
           </a>
           <a class="btn btn-outline-light btn-social btn-footer mx-1 bg-white"  href="https://www.instagram.com/orientaescolhaprofissional/">
-            <i class="fa fa-instagram  "style="color: #25bcbd; background-color: white;"></i>
+            <i class="fa fa-instagram  "style="color: #6ebbbc; background-color: white;"></i>
           </a>
               
           </div>
@@ -70,47 +70,10 @@
   <!-- Plugin JavaScript -->
   <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <script>
-jQuery(document).ready(function() {
-
-jQuery('.mais-noticias').on('click', function(e) {
-    e.preventDefault();
-
-    var dados_envio = {
-      'mais_noticias_nonce': js_global.mais_noticias_nonce,
-        'paged': 2,
-        'action': 'mais_noticias'
-    }
-
-    jQuery.ajax({
-        url: js_global.xhr_url,
-        type: 'POST',
-        data: dados_envio,
-        dataType: 'JSON',
-        success: function(response) {
-            if (response == '401'  ){
-                console.log('Requisição inválida')
-            }
-            else if (response == 402) {
-                console.log('Todos os posts já foram mostrados')
-            } else {
-                console.log(response)
-            }
-        }
-    });
-
-
-});
-
-})
-  </script>
-  <!-- Contact Form JavaScript -->
-  <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/jqBootstrapValidation.js"></script>
-  <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/contact_me.js"></script>
+ 
   
 
-  <!-- Custom scripts for this template -->
-  <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/freelancer.js"></script>
+  <script src="<?php echo  get_stylesheet_directory_uri();?>/assets/js/freelancer.min.js"></script>
   
 
 </body>

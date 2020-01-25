@@ -14,7 +14,7 @@ get_header();
 ?>
 
 
-<section class="page-section mt-8" id="contact">
+<section class="page-section mt-8 mb-4 pb-4" id="contact">
     <div ng-controller="ProfissaoIternaCtrl">
         <div class="container mt-8 ">
             <h1 class="text-center text-primary mb-2 mt-4" ng-bind="titleProfissao"></h1>
