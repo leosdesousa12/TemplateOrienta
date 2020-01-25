@@ -1,20 +1,38 @@
 <?php
+  
+  session_start();
 
-$myApiKey="AIzaSyDsc44gXWL0oUo3nV5xoxi66Na7Z6h3Hfg"; // Provide your API Key
-$myChannelID="UCqYQILMttKeviOz2G8mZKSA"; // Provide your Channel ID
-$maxResults="2"; // Number of results to display
- 
-// Make an API call to store list of videos to JSON variable
-$myQuery = "https://www.googleapis.com/youtube/v3/search?key=$myApiKey&channelId=$myChannelID&part=snippet,id&order=date&maxResults=$maxResults";
-$videoList = file_get_contents($myQuery);
- 
-// Convert JSON to PHP Array
-$decoded = json_decode($videoList, true);
+
+if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 3600  ){
+//echo "pegou os dados";
+  $_SESSION['last_access'] = time();
+
+  $myApiKey="AIzaSyAe9xuMADrprLqkBiKYc1b4yl1f97zEeQE"; // Provide your API Key
+  $myChannelID="UCqYQILMttKeviOz2G8mZKSA"; // Provide your Channel ID
+  $maxResults="2"; // Number of results to display
+  
+  //Make an API call to store list of videos to JSON variable
+  $myQuery = "https://www.googleapis.com/youtube/v3/search?key=$myApiKey&channelId=$myChannelID&part=snippet,id&order=date&maxResults=$maxResults";
+  $videoList = file_get_contents($myQuery);
+  
+  // Convert JSON to PHP Array
+ // $decoded = json_decode($videoList, true);
+  $_SESSION['movies'] = json_decode($videoList, true);
+}
+    $decoded =$_SESSION['movies'];
+
+
+
+   
+
+
+
  
 ?>
 
 <div ng-controller="mainCtrl">
-    <?php get_header();
+    <?php
+    get_header();
 
 ?>
 
@@ -112,7 +130,7 @@ $decoded = json_decode($videoList, true);
                         <div class="carousel-inner w-100" role="listbox">
                             <div class="carousel-item " ng-class="{'active text-primary':(($index ) == 0)}"
                                 ng-repeat="post in posts">
-                                
+
                                 <div class="col-lg-4 col-md-6 border-0 mr-0 pr-0 ml-0 pl-0"
                                     ng-style="{'background': post.color}">
                                     <div class=" text-center" style="background: post.color;">
@@ -164,11 +182,12 @@ $decoded = json_decode($videoList, true);
                         <img ng-src="{{materia.photo[0]}}"
                             class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                             alt="..." style="width: 723px; height:300px ">
+                            </a>
                         <h3 class="text-left text-cinza ml-2 mb-0 pt-4" ng-bind="materia.title"></h3>
                         <h4 class="text-color text-justify font-weight-normal mt-0 pt-0  ml-2 pb-1"
                             ng-bind-html="materia.post_excerpt">
                         </h4>
-                    </a>
+                    
 
                 </div>
 
@@ -183,7 +202,7 @@ $decoded = json_decode($videoList, true);
     </div>
 
 
-    <div class="container text-center mt-3 pt-3 ">
+    <div class="container text-center mt-3 pt-3 mb-2 pb-2">
         <!-- Portfolio Section Heading -->
         <h1 class="text-center font-weight-normal text-primary mt-3 pt-3  pb-2">VÍDEOS EM DESTAQUE</h1>
         <div class="container">
@@ -200,19 +219,19 @@ $decoded = json_decode($videoList, true);
                                 src="https://www.youtube.com/embed/<?php echo $items['id']['videoId'];  ?>?rel=0"
                                 allowfullscreen></iframe>
                         </div>
-                        <h6 class="text-left text-cinza ml-2"><?php echo $items['snippet']['title']; ?></h6>
-                        <h6 class="text-color text-justify font-weight-normal  ml-2 pb-1">
-                            <?php echo $items['snippet']['description']; ?></h6>
+                        <h3 class="text-left text-cinza ml-2"><?php echo $items['snippet']['title']; ?></h3>
+                        <h4 class="text-color text-justify font-weight-normal  ml-2 pb-1">
+                            <?php echo $items['snippet']['description']; ?></h4>
                     </a>
                 </div>
 
                 <?php }
 
+
                 ?>
             </div>
         </div>
     </div>
-
 
 
     <?php get_footer(); ?>
