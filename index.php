@@ -37,7 +37,7 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 36
 ?>
 
     <!-- Masthead -->
-    <header class="text-white text-center pt-4 mt-4">
+    <header class="text-white text-center pr-0 pl-0 mr-0 ml-0  pb-2  pr-0 pl-0 pt-4 mt-4">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <?php query_posts('post_type=slider&post_per_page=-1'); ?>
@@ -86,7 +86,7 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 36
     </header>
 
     <!-- equipe Section -->
-    <section class="page-section equipe pb-5" id="equipe">
+    <section class="page-section equipe pb-5 mt-3 pt-3 " id="equipe">
         <div class="container">
 
             <!-- Portfolio Section Heading -->
@@ -212,8 +212,7 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 36
                 foreach ($decoded['items'] as $items)
                 {?>
 
-                <div class="card border-0 rounded-0 pt-2 mt-2" style="max-width: 550px; ">
-                    <a href="{{materia.link}}" class="pr-1">
+                <div class="card border-0 rounded-0 pt-2 mt-2 pr-1 mr-1" style="max-width: 540px; ">
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item"
                                 src="https://www.youtube.com/embed/<?php echo $items['id']['videoId'];  ?>?rel=0"
@@ -222,7 +221,6 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 36
                         <h3 class="text-left text-cinza ml-2"><?php echo $items['snippet']['title']; ?></h3>
                         <h4 class="text-color text-justify font-weight-normal  ml-2 pb-1">
                             <?php echo $items['snippet']['description']; ?></h4>
-                    </a>
                 </div>
 
                 <?php }

@@ -114,9 +114,9 @@
                                             <div class="card-header border-0 rounded-0 bd-cinza">
 
                                                 <h5 class="text-left text-cinza">Categorias</h5>
-                                                <div class="text-left bd-cinza " ng-repeat="category in categorys | limitTo: 4">
+                                                <div class="text-left bd-cinza " ng-repeat="category in categorys ">
                                                     <p class="text-left text-color text-normal">-
-                                                        {{category.post_category.name}}</p>
+                                                        {{category}}</p>
                                                 </div>
 
                                             </div>

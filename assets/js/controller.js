@@ -215,6 +215,7 @@ app.controller('MateriaCtrl',['$scope','Materias','Category', function($scope, M
     $scope.visivel = false;
     $scope.materias;
     $scope.lista=[];
+    $scope.categorys = [];
   
     Materias.getPost().then(function(data){
         
@@ -225,12 +226,12 @@ app.controller('MateriaCtrl',['$scope','Materias','Category', function($scope, M
     });
   
 
-    Category.getCategory().then(function(data){
+   /* Category.getCategory().then(function(data){
         $scope.categorys = data.category;
         $scope.visivel = true;
 
         });
-
+*/
 
 $scope.carregarLista = function(list){
     c = list;
@@ -243,7 +244,14 @@ $scope.carregarLista = function(list){
         $scope.pagina.push(c.splice(0, $scope.totalPorPagina));
     }
     $scope.lista = $scope.pagina[0];
-
+    var local = [];
+    $scope.lista.forEach(element => {
+        element.post_category.forEach(cat => {
+            local.push(cat.cat_name);
+        });
+    });
+    $scope.categorys = local;
+    $scope.visivel = true;
 }
 //função chamada no ngClick;
 $scope.loadListPagination = function (i) {
@@ -263,19 +271,29 @@ app.controller('MateriaInternaCtrl',['$scope','Materia','Category', function($sc
     $scope.post;
     $scope.visivel = false;
     $scope.materia;
+    $scope.categorys = [];
+
   
     Materia.getPost().then(function(data){
         $scope.materia = data.posts[0];
+        var local =  [];
+       
+        $scope.materia.post_category.forEach(cat => {
+            local.push(cat.cat_name);
+        });
+    
+        $scope.categorys = local;
+        $scope.visivel = true;
 
     });
 
  
 
-    Category.getCategory().then(function(data){
+/*Category.getCategory().then(function(data){
         $scope.categorys = data.category;
         $scope.visivel = true;
 
-        });
+        });*/
    
 
 
@@ -296,6 +314,8 @@ for (var i = 0; i < p; i++) {
      $scope.pagina.push(c.splice(0, $scope.totalPorPagina));
 }
 $scope.lista = $scope.pagina[0];
+
+
 //função chamada no ngClick;
 $scope.loadListPagination = function (i) {
     $scope.pageAtual = i;
