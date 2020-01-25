@@ -4234,6 +4234,18 @@ Version: 1.0
     display: flex !important;
     flex-basis: auto;
   }
+ #navbarResponsive{
+    background: #ecedec;
+    width: 100%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+
+  }
+
+  .container.menu{
+    background: #ecedec !important;
+    min-width: 100% !important;
+  }
   
   .navbar-expand .navbar-toggler {
     display: none;
@@ -9661,6 +9673,8 @@ Version: 1.0
     padding-bottom: 1rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
+    background: #ecedec !important;
+    height: auto;
   }
   
   #mainNav .navbar-brand {
