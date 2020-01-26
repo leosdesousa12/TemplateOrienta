@@ -10112,7 +10112,7 @@ input[type="contato"]::-webkit-input-placeholder {
   }
 
   .slider{
-    height: auto;
+    height: auto !important;
     min-width: 100% !important;
   }
 
