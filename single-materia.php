@@ -34,8 +34,8 @@ get_header();
                                         alt="..." style="whidth: 100%;">
                                     <h6 class="text-dark font-weight-bold  text-left " ng-bind="materia.title"></h6>
 
-                                    <h5 class="text-color text-justify font-weight-normal "
-                                        ng-bind-html="materia.post_content"></h5>
+                                    <h6 class="text-color text-justify font-weight-normal "
+                                        ng-bind-html="materia.post_content"></h6>
 
 
                                 </div>

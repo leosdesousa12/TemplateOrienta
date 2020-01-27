@@ -17,7 +17,7 @@
                         <?php if($quant %2 !=0 ):  ?>
                         <div class="card mb-4  mt-0 pt-0 mb-0 pb-0 border-0 rounded-0 " style="max-width: 100%; margin-bottom:0px !important;">
                             <div class="row no-gutters  mt-0 pt-0 mb-0 pb-0 border-0 rounded-0 ">
-                                <div class="col-md-4">
+                                <div class="col-md-auto">
                                 <img  class="card-img  mt-0 pt-0 mb-0 pb-0 border-0 rounded-0 "  url="<?php echo the_post_thumbnail('full'); ?>
                                 </div>
                                 <div class="col-md-8" style=" background: <?php the_field('get_cor') ?>">
@@ -35,7 +35,7 @@
                               <h5 class="card-text text-right"><?php echo the_content();?></h5>
                               </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-auto">
                               <img  class="card-img  mt-0 pt-0 mb-0 pb-0 border-0 rounded-0  url="<?php echo the_post_thumbnail('medium_large'); ?>
                               </div>
                           </div>
