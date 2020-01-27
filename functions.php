@@ -13,7 +13,7 @@ add_theme_support('post-thumbnails');
 if (class_exists('MultiPostThumbnails')) {
  
   new MultiPostThumbnails(array(
-  'label' => 'Secondary Image',
+  'label' => 'Segunda Imagem',
   'id' => 'secondary-image',
   'post_type' => 'propostas'
    ) );
