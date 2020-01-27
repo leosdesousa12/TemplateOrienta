@@ -184,7 +184,7 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 36
                             alt="..." style="width: 723px; height:300px ">
                             </a>
                         <h3 class="text-left text-cinza ml-2 mr-2 mb-0 pt-4" ng-bind="materia.title"></h3>
-                        <h4 class="text-color text-justify font-weight-normal mt-0 pt-0  ml-2 pb-1 mr-2 "
+                        <h4 class="text-color text-justify font-weight-normal mt-0 pt-0  ml-2 pb-1 mr-2 pr-2"
                             ng-bind-html="materia.post_excerpt">
                         </h4>
                     
