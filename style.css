@@ -10143,3 +10143,11 @@ input[type="contato"]::-webkit-input-placeholder {
   .text-cinza{
     color: #373737;
   }
+
+.attachment-post-secondary-image-thumbnail .size-post-secondary-image-thumbnail{
+    width: 200px !important;
+}
+.secondary-image .img {
+  width: 60px !important;
+  
+}

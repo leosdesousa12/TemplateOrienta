@@ -1,10 +1,17 @@
-app.controller('HomeCtrl',['$scope','Posts', function($scope, Posts){
+app.controller('HomeCtrl',['$scope','Posts','PageProposta', function($scope, Posts,PageProposta){
     $scope.posts;
     $scope.postPrincipal;
-    
+    $scope.pagePrposta;
+
+    PageProposta.getPost().then(function(data){
+        $scope.posts = data.posts;
+        $scope.pagePrposta = data.posts[0];
+        //console.log( $scope.pagePrposta.title);
+    });
 
     Posts.getPosts().then(function(data){
         $scope.posts =data.posts;
+        //console.log(data.posts);
 
         if(!($scope.posts[0].idPrincipal)){
             $scope.postPrincipal = $scope.posts[0];

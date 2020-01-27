@@ -9,6 +9,18 @@ wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 //habilitando imagem destacas
 add_theme_support('post-thumbnails');
+
+if (class_exists('MultiPostThumbnails')) {
+ 
+  new MultiPostThumbnails(array(
+  'label' => 'Secondary Image',
+  'id' => 'secondary-image',
+  'post_type' => 'propostas'
+   ) );
+   
+   }
+   add_image_size('post-secondary-image-thumbnail', 270, 170);
+
 //add_image_size( 'thumb-custom', 200, 200, true );
 
 //ativando menus dinamicos
@@ -300,7 +312,9 @@ function test_ajax()
      //   $aTemp->comment_count = $p->comment_count;	
         $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
         $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
-
+       $aTemp->segundaImagem = MultiPostThumbnails::get_the_post_thumbnail('propostas','secondary-image',$p->ID,'post-secondary-image-thumbnail',null);
+       //$aTemp->segundaImagem = MultiPostThumbnails::get_the_post_thumbnail('propostas','secondary-image',$p->ID,'post-secondary-image-thumbnail',null);
+    
         $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
         $oReturn->posts[] = $aTemp;
     
@@ -752,5 +766,43 @@ function getSlider()
 }
 add_action( "wp_ajax_nopriv_getProfissao", "getProfissao");
 add_action( "wp_ajax_getProfissao","getProfissao");
+
+
+
+
+function getPageProposta()
+{
+    header("Content-Type: application/json");
+   /* $posts_array = get_posts();
+    echo json_encode( $posts_array );*/
+    $args = array(
+      'pagename' => 'propostas'
+        
+      );
+
+
+      $posts_array = new WP_Query($args );
+      foreach($posts_array->posts as $p){
+         
+        $aTemp = new stdClass();
+              //  $aTemp->post_id = $p->ID;
+      //  $aTemp->author = $p->post_author;
+        $aTemp->post_content = apply_filters('the_content', $p->post_content);
+    //    $aTemp->post_excerpt = $p->post_excerpt;
+      //  $aTemp->post_category = get_the_category( $p->ID );
+      //  $aTemp->imgCategory = get_wp_term_image(3);
+        $aTemp->title = $p->post_title;
+       // $aTemp->link = $p->guid;
+       // $aTemp->link = get_permalink($p);
+       // $aTemp->comment_count = $p->comment_count;	
+        $oReturn->posts[] = $aTemp;
+    
+      }
+      echo json_encode( $oReturn );
+
+    die();
+}
+add_action( "wp_ajax_nopriv_getPageProposta", "getPageProposta");
+add_action( "wp_ajax_getPageProposta","getPageProposta");
 
 ?>
