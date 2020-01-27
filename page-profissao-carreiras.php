@@ -16,7 +16,7 @@
                                     style="max-width: 100px;  background: #eceeed;">
                                     <img ng-src="{{category.img}}" class="card-img-top" alt="...">
                                 </div>
-                                <div class="card-body text-center ml-4 " style="max-width: 160px;">
+                                <div class="card-body text-center ml-3 " style="max-width: 160px;">
                                     <p class="card-text text-center text-dark mr-0 ml-0"
                                         ng-bind="category.post_category.name"></p>
                                 </div>

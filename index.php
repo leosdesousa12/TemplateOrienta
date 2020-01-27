@@ -183,8 +183,8 @@ if( !isset($_SESSION['last_access']) || (time() - $_SESSION['last_access']) > 36
                             class=" card-img img-fluid img-thumbnail card-img-top pt-0 bt-0 rounded-0 border-0"
                             alt="..." style="width: 723px; height:300px ">
                             </a>
-                        <h3 class="text-left text-cinza ml-2 mb-0 pt-4" ng-bind="materia.title"></h3>
-                        <h4 class="text-color text-justify font-weight-normal mt-0 pt-0  ml-2 pb-1"
+                        <h3 class="text-left text-cinza ml-2 mr-2 mb-0 pt-4" ng-bind="materia.title"></h3>
+                        <h4 class="text-color text-justify font-weight-normal mt-0 pt-0  ml-2 pb-1 mr-2 "
                             ng-bind-html="materia.post_excerpt">
                         </h4>
                     

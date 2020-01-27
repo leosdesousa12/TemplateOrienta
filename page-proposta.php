@@ -3,7 +3,7 @@
 <?php get_header(); ?>
 
 <!-- Contact Section -->
-<section class="page-section pb-0 mb-0 mt-4" id="contact">
+<section class="page-section pb-3 mb-3 mt-4" id="contact">
     <div ng-controller="HomeCtrl" class="container mt-4">
         <h1 class="text-center font-weight-normal  text-primary mb-2 mt-4" ng-bind="postPrincipal.title"></h1>
 
