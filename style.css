@@ -10151,3 +10151,7 @@ input[type="contato"]::-webkit-input-placeholder {
   width: 60px !important;
   
 }
+
+.asteristico{
+  color:#F00;
+}
