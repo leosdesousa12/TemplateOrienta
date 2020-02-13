@@ -1,10 +1,4 @@
 <?php 
-//include_once( get_stylesheet_directory() .'/var.php');
-include_once( get_template_directory() . 'var.php' );
-
-
-
-
 wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 //habilitando imagem destacas
