@@ -69,27 +69,6 @@ function slyder_posts_types(){
 }
 add_action('init',slyder_posts_types);
 
-//criando posts types
-/*
-function meus_posts_types_Propostas(){
-    //equipe
-    register_post_type( 'Propostas', 
-        array(
-            'labels' => array(
-                'name' => __('Propostas'),
-                'singular_name' => __('Proposta')
-            ),
-        'public'         => true,
-        'rewrite' => array('slug' => 'Propostas'), // <--- definimos o slug aqui...
-        'has_archive'    => true,
-        'menu_icon'      => 'dashicons-lightbulb',
-        'supports'        => array('title','editor','thumbnail','page-attributes'),
-        )
-        );
-
-}
-add_action('init',meus_posts_types_Propostas);*/
-
 
 function wp_get_menu_array($current_menu) {
 
@@ -246,25 +225,6 @@ $args = array(
     );
 register_post_type( 'materia', $args );
 }
-
-
-
-/*____________________________________________________________________________________________ */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function enable_ajax_functionality()
@@ -735,24 +695,12 @@ function getSlider()
       foreach($posts_array->posts as $p){
          
         $aTemp = new stdClass();
-        
         $thumb_id = (int)get_post_thumbnail_id($p->ID);
-      //  $aTemp->post_id = $p->ID;
-      //  $aTemp->author = $p->post_author;
-     //   $aTemp->post_content = apply_filters('the_content', $p->post_content);
-    //    $aTemp->post_excerpt = $p->post_excerpt;
-      //  $aTemp->post_category = get_the_category( $p->ID );
-      //  $aTemp->imgCategory = get_wp_term_image(3);
-      //  $aTemp->title = $p->post_title;
-       // $aTemp->link = $p->guid;
-       // $aTemp->link = get_permalink($p);
-       // $aTemp->comment_count = $p->comment_count;	
         $aTemp->image = wp_get_attachment_image_src( $thumb_id, 'thumbnail');
         $aTemp->imageMedium = wp_get_attachment_image_src( $thumb_id, 'medium');
 
         $aTemp->photo = wp_get_attachment_image_src( $thumb_id, 'full');
         $oReturn->posts[] = $aTemp;
-    
       }
       echo json_encode( $oReturn );
 
@@ -761,14 +709,9 @@ function getSlider()
 add_action( "wp_ajax_nopriv_getProfissao", "getProfissao");
 add_action( "wp_ajax_getProfissao","getProfissao");
 
-
-
-
 function getPageProposta()
 {
     header("Content-Type: application/json");
-   /* $posts_array = get_posts();
-    echo json_encode( $posts_array );*/
     $args = array(
       'pagename' => 'propostas'
         
@@ -779,18 +722,10 @@ function getPageProposta()
       foreach($posts_array->posts as $p){
          
         $aTemp = new stdClass();
-              //  $aTemp->post_id = $p->ID;
-      //  $aTemp->author = $p->post_author;
+
         $aTemp->post_content = apply_filters('the_content', $p->post_content);
-    //    $aTemp->post_excerpt = $p->post_excerpt;
-      //  $aTemp->post_category = get_the_category( $p->ID );
-      //  $aTemp->imgCategory = get_wp_term_image(3);
         $aTemp->title = $p->post_title;
-       // $aTemp->link = $p->guid;
-       // $aTemp->link = get_permalink($p);
-       // $aTemp->comment_count = $p->comment_count;	
-        $oReturn->posts[] = $aTemp;
-    
+        $oReturn->posts[] = $aTemp;    
       }
       echo json_encode( $oReturn );
 
